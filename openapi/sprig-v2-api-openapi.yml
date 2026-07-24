@@ -1,0 +1,284 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: support@sprig.com
+    name: Support
+  description: 'Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.
+
+
+    While traditional studies are slow, difficult to target, and lack context, Sprig studies are delivered automatically to specific users at specific moments throughout the customer journey — all within the product experience.
+
+
+    This API provides tools to manage users and studies. User management is used if you are segmenting your samples between visitors that will be tracked with an ID and unregistered visitors. Study export tools will allow you to take results data and send it to another data store or format results for presentation in other applications'
+  title: Sprig V1 V2 API
+  version: 2.2.1
+servers:
+- url: https://api.sprig.com
+tags:
+- name: V2
+paths:
+  /v2/purge/visitors:
+    post:
+      description: 'The Purge Visitors API helps teams comply with end-user bulk data deletion requests mandated by laws like GDPR and CCPA. This endpoint will delete users and all related user data identified by a set of emails, visitor IDs, or user IDs.
+
+
+        Purge requests default to being processed 10 days after submission, however this delay can be configured via the delaySeconds parameter. The endpoint is limited to 100 visitor deletions per request.
+
+
+        One of email, userId, or visitorId parameter is required to identify the user for data deletion.'
+      operationId: post-v2-purge-visitors
+      parameters:
+      - description: Bearer YOUR_API_KEY
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example-1:
+                value:
+                  delaySeconds: 86400
+                  emails:
+                  - freddy@sprig.com
+                  - gustavo@sprig.com
+                  userIds:
+                  - '123456789'
+                  visitorIds:
+                  - 8cd04391-fc36-4e9d-a9ac-bc77cd507ee0
+            schema:
+              properties:
+                delaySeconds:
+                  description: Seconds to wait before starting visitor data purging. This can be used as a safety measure in case the request needs to be canceled.
+                  type: integer
+                emails:
+                  description: List of emails for which visitor data will be purged.
+                  items:
+                    type: string
+                  type: array
+                userIds:
+                  description: List of user IDs (external user IDs) for which visitor data will be purged.
+                  items:
+                    type: string
+                  type: array
+                visitorIds:
+                  description: List of visitor IDs for which visitor data will be purged.
+                  items:
+                    type: string
+                  type: array
+              type: object
+        description: At least one of “emails”, “visitorIds” or “userIds” needs to be non-empty in the request body. Only visitors that exist in the environment for which the API key is in the authorization header can be purged.
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                Successful Response:
+                  value:
+                    requestId: “b9570865-0840-497d-9016-8b66575c9683”
+              schema:
+                properties:
+                  requestId:
+                    type: string
+                type: object
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Purge Visitors
+      tags:
+      - V2
+  /v2/users:
+    parameters: []
+    post:
+      description: 'Endpoint facilitating the programatic upsertion of a user.
+
+        Users must be upserted 1 at a time.
+
+        Events created for this user are for historical tracking purposes. Any event tied to a user through this endpoint will not trigger a study through Sprig''s SDK.
+
+        Attributes and attribute values can be created and tied to a user through this endpoint.'
+      operationId: post-user-v2
+      parameters:
+      - $ref: '#/components/parameters/Authorization-API-Key'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example user:
+                value:
+                  attributes:
+                    customer: 'true'
+                  email: user@test.com
+                  events:
+                  - event: login
+                    timestamp: 1626448859836
+                  userId: '12347'
+            schema:
+              properties:
+                attributes:
+                  description: Key value pairs of attributes
+                  properties:
+                    attributeName:
+                      description: Attribute name and value. Attributes limited to total of 100 values
+                      type: string
+                  type: object
+                emailAddress:
+                  description: Valid Email to track visitor by
+                  type: string
+                events:
+                  items:
+                    properties:
+                      event:
+                        description: Name of event already being tracked in Sprig
+                        type: string
+                      timestamp:
+                        description: Unix timestamp in milliseconds
+                        type: integer
+                    type: object
+                  type: array
+                userId:
+                  description: Existing or desired id for visitor
+                  type: string
+              required:
+              - userId
+              type: object
+        description: Post the necessary fields for the API to upsert a new user.
+      responses:
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Upsert a User
+      tags:
+      - V2
+  /v2/users/{userId}:
+    parameters:
+    - description: Id of an existing user.
+      in: path
+      name: userId
+      required: true
+      schema:
+        type: string
+    get:
+      description: 'Endpoint that allows the retrieval of a visitor based on a known User ID.
+
+        This endpoint can only recover visitors with user IDs, so please ensure your Sprig implementation has user tracking configured correctly based on your SDK installation: /docs/Installation/introduction-web/index
+
+        This endpoint will retrieve visitor info, a list of attributes tied to the visitor, and a list of events with relevant filter criteria.'
+      operationId: get-v2-users-:userId
+      parameters:
+      - $ref: '#/components/parameters/Authorization-API-Key'
+      responses:
+        '200':
+          content:
+            application/json:
+              examples: {}
+              schema:
+                $ref: '#/components/schemas/Userv2'
+          description: OK
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Retrieve a User
+      tags:
+      - V2
+components:
+  responses:
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
+    '422':
+      description: Unprocessable Entity
+    '429':
+      description: Your application has made too many requests in too short a time.
+    '202':
+      description: Accepted
+    '404':
+      description: Not Found
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
+    '400':
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                type: string
+      description: Bad Request
+  schemas:
+    Userv2:
+      description: API V2 user model
+      properties:
+        attributes:
+          type: object
+        createdAt:
+          type: number
+        events:
+          items:
+            properties:
+              count:
+                type: number
+              createdAt:
+                type: number
+              event:
+                minLength: 1
+                type: string
+              updatedAt:
+                type: number
+            type: object
+          minItems: 1
+          type: array
+          uniqueItems: true
+        externalUserId:
+          minLength: 1
+          nullable: true
+          type: string
+        id:
+          minLength: 1
+          type: string
+      title: ''
+      type: object
+      x-examples:
+        V2 User:
+          attributes:
+            completed_flow: false
+            plan: enterprise
+          createdAt: 1612739790947
+          events:
+          - count: 1
+            createdAt: 1612739790947
+            event: Clicked Signup
+            updatedAt: 1612739912314
+          id: a926111b-fa62-49f7-8666-2c94ca8b18fc
+  parameters:
+    Authorization-API-Key:
+      description: API-Key YOUR_API_KEY
+      in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Use `API-Key YOUR_API_KEY` for v2 endpoints or `Bearer YOUR_API_KEY` for export endpoints.
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true
