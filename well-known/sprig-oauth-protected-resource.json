@@ -1,0 +1,1 @@
+{"resource":"https://mcp.sprig.com/mcp","authorization_servers":["https://api.sprig.com"],"scopes_supported":["environments:read","surveys:read","surveys:write","responses:read","themes:read"],"bearer_methods_supported":["header"],"resource_name":"Sprig MCP Server"}

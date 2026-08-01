@@ -1,0 +1,16 @@
+{
+  "provider": "sprig",
+  "sources": [
+    "sprig-v1-api-openapi.yml",
+    "sprig-v2-api-openapi.yml"
+  ],
+  "outputs": [
+    "sprig-v1-api-openapi.yml",
+    "sprig-v2-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

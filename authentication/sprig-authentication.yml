@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sprig-api-openapi-original.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Use `API-Key YOUR_API_KEY` for v2 endpoints or `Bearer YOUR_API_KEY` for export
+    endpoints.
+  sources:
+  - openapi/sprig-api-openapi-original.json

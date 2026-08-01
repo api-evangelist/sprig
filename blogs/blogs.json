@@ -1,0 +1,21 @@
+{
+  "repo": "sprig",
+  "feeds": [
+    {
+      "source": "https://status.sprig.com/history.atom",
+      "feed_url": "https://status.sprig.com/history.atom",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://status.sprig.com/",
+      "feed_url": "https://status.sprig.com/history.atom",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 4,
+  "fetched": "2026-08-01T15:49:00Z"
+}

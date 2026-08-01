@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+hosts:
+  - host: https://api.sprig.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://sprig.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://mcp.sprig.com
+    documents:
+      - path: /.well-known/oauth-authorization-server   # RFC 8414
+        status: 200
+        file: sprig-oauth-authorization-server.json
+      - path: /.well-known/oauth-protected-resource     # RFC 9728
+        status: 200
+        file: sprig-oauth-protected-resource.json
+notes: >-
+  Sprig publishes OAuth 2.0 discovery metadata on its MCP host (mcp.sprig.com),
+  pointing at api.sprig.com as the authorization server. No security.txt or
+  OpenID configuration was found on the API or marketing hosts.

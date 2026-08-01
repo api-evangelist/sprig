@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sprig.com/reference/sprig-api/overview
+versioning:
+  scheme: uri-path
+  current: v2
+  versions: [v1, v2]
+  notes: >-
+    Export endpoints are versioned under /v1 (responses, surveys, themes);
+    user + purge endpoints under /v2. Version is carried in the URL path.
+status_page: https://status.sprig.com/
+sla:
+  notes: Enterprise plans documented at 1,000 QPS; higher limits via support@sprig.com.
+support: support@sprig.com
+changelog: https://docs.sprig.com/changelog
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation/Sunset-header policy was found; no operations are marked deprecated in the spec.
+deprecated_operations: []

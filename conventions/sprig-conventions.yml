@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sprig.com/reference/sprig-api/overview
+authentication:
+  style: api-key-header
+  header: Authorization
+  formats:
+    - "API-Key YOUR_API_KEY   # v2 endpoints"
+    - "Bearer YOUR_API_KEY    # v1 export endpoints"
+  https_required: true
+  see: authentication/sprig-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header is documented for the Sprig API. Read (export)
+    endpoints are naturally idempotent; the upsert-user endpoint (POST /v2/users)
+    is an upsert keyed on userId, so repeated calls converge on the same state.
+pagination:
+  style: cursor
+  request_params:
+    - cursor   # Base64-encoded opaque cursor position
+    - limit    # 1..1000 results per page
+  bounds:
+    max_limit: 1000
+  notes: Export endpoints (responses, surveys, themes) return up to 1000 records per page; page with the opaque cursor parameter.
+filtering:
+  params:
+    - sid     # integer Survey id
+    - start   # earliest creation date, epoch ms
+    - end     # latest creation date, epoch ms
+versioning:
+  style: uri-path
+  see: lifecycle/sprig-lifecycle.yml
+error_envelope:
+  style: http-status
+  notes: Errors signalled by HTTP status code; see errors/sprig-problem-types.yml.
+rate_limiting:
+  enterprise_qps: 1000
+  signal: HTTP 429 on limit exceeded
+  contact: support@sprig.com
+formats:
+  request: application/json
+  response: application/json
+webhooks:
+  see: asyncapi/sprig-webhooks.yml

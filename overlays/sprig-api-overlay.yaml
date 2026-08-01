@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Sprig API
+  version: 1.0.0
+extends: openapi/sprig-api-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: sprig
+      x-apievangelist-category: [product-research, surveys, customer-insights]
+      x-apievangelist-mcp: https://mcp.sprig.com/mcp
+      x-apievangelist-status-page: https://status.sprig.com/
+      x-apievangelist-webhooks: true
+  - target: $.info
+    update:
+      x-apievangelist-auth:
+        rest: API key in Authorization header (API-Key / Bearer)
+        mcp: OAuth 2.0 authorization_code + PKCE
+  - target: $
+    update:
+      x-apievangelist-pagination:
+        style: cursor
+        params: [cursor, limit]
+        max_limit: 1000

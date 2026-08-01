@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sprig-api-openapi-original.json
+notes: >-
+  Entity graph derived from the Sprig OpenAPI schemas (User, Userv2) and the
+  export endpoints (surveys, responses, themes). Relationships inferred from
+  id-reference fields (surveyId/sid, userId/visitorId) documented in the API and
+  webhook payloads.
+entities:
+  - name: Survey
+    aka: [Study]
+    id_field: sid
+    source: get-v1-surveys
+    description: A Sprig study/survey configuration.
+  - name: Response
+    id_field: responseGroupUid
+    source: get-v1-responses
+    description: A user's response to a survey question, retrievable per study.
+  - name: Theme
+    source: get-v1-themes
+    description: An AI-identified theme grouping related responses within a study.
+  - name: User
+    id_field: userId
+    source: [post-user-v2, get-v2-users-:userId]
+    description: A tracked, identified visitor with attributes.
+  - name: Visitor
+    id_field: visitorId
+    source: post-v2-purge-visitors
+    description: An unregistered/anonymous visitor; can be purged for GDPR/CCPA.
+  - name: Environment
+    id_field: environmentId
+    description: A product/environment scope (Production or Development).
+relationships:
+  - from: Response
+    to: Survey
+    type: belongs_to
+    via: surveyId
+  - from: Theme
+    to: Survey
+    type: belongs_to
+    via: surveyId
+  - from: Theme
+    to: Response
+    type: has_many
+    via: responseGroupUid
+  - from: Response
+    to: User
+    type: belongs_to
+    via: userId
+  - from: Survey
+    to: Environment
+    type: belongs_to
+    via: environmentId
+  - from: User
+    to: Visitor
+    type: has_one
+    via: visitorId

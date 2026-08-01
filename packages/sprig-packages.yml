@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sprig.com/docs/developer-center/installation
+packages:
+  - language: javascript
+    registry: npm
+    name: "@sprig-technologies/sprig-browser"
+    url: https://www.npmjs.com/package/@sprig-technologies/sprig-browser
+    install: npm install @sprig-technologies/sprig-browser
+    version: 2.48.2
+    repository: https://github.com/UserLeap/sdk
+    docs: https://docs.sprig.com/docs/web-javascript
+    official: true
+    notes: Sprig Web (JavaScript) SDK.
+  - language: javascript
+    registry: npm
+    name: "@sprig-technologies/sprig-bundled"
+    url: https://www.npmjs.com/package/@sprig-technologies/sprig-bundled
+    install: npm install @sprig-technologies/sprig-bundled
+    official: true
+    notes: Sprig Web SDK with bundled dependencies.
+  - language: javascript
+    registry: npm
+    name: "@sprig-technologies/analytics-react-native-plugin-sprig"
+    url: https://www.npmjs.com/package/@sprig-technologies/analytics-react-native-plugin-sprig
+    install: npm install @sprig-technologies/analytics-react-native-plugin-sprig
+    official: true
+    notes: Sprig plugin for Segment analytics-react-native.
+  - language: dart
+    registry: pub.dev
+    name: sprig_flutter_plugin
+    url: https://pub.dev/packages/sprig_flutter_plugin
+    install: flutter pub add sprig_flutter_plugin
+    repository: https://github.com/UserLeap/flutter-sprig
+    docs: https://docs.sprig.com/docs/installation/introduction-mobile/flutter_plugin
+    official: true
+    notes: Sprig Flutter plugin.
+  - language: swift
+    registry: github
+    name: userleap-ios-sdk-releases
+    url: https://github.com/UserLeap/userleap-ios-sdk-releases
+    docs: https://docs.sprig.com/docs/installation/introduction-mobile/ios-sdk-installation
+    official: true
+    notes: Official releases of the Sprig (UserLeap) iOS SDK, distributed via CocoaPods/SPM.
+  - language: kotlin
+    registry: github
+    name: analytics-kotlin-sprig
+    url: https://github.com/UserLeap/analytics-kotlin-sprig
+    docs: https://docs.sprig.com/docs/installation/introduction-mobile/android-sdk-installation
+    official: true
+    notes: Sprig Android (Segment analytics-kotlin) integration.
+  - language: swift
+    registry: github
+    name: analytics-swift-sprig
+    url: https://github.com/UserLeap/analytics-swift-sprig
+    official: true
+    notes: Sprig Segment analytics-swift integration.

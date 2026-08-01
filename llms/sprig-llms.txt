@@ -1,0 +1,163 @@
+# Sprig Docs
+
+## Docs
+
+- [Changelog](https://docs.sprig.com/changelog.md)
+- [Account Passwords & Management](https://docs.sprig.com/docs/account-and-settings/account-and-login/changing-account-passwords.md)
+- [Login & Provisioning](https://docs.sprig.com/docs/account-and-settings/account-and-login/index.md): How to help your team sign up for Sprig
+- [Manually Adding Users](https://docs.sprig.com/docs/account-and-settings/account-and-login/manually-adding-users.md)
+- [Auth0](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/auth0.md)
+- [Google Workspace](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/google-workspace.md)
+- [Single Sign-On (SSO)](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/index.md)
+- [Keycloak](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/keycloak.md)
+- [Microsoft Entra ID](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/microsoft-entra-id.md)
+- [Okta](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/okta.md)
+- [OneLogin](https://docs.sprig.com/docs/account-and-settings/account-and-login/sso-1/onelogin.md)
+- [Domain-Based Team Discovery](https://docs.sprig.com/docs/account-and-settings/account-and-login/team-discovery.md): Allow team members to automatically join your Sprig workspace
+- [Admin Configuration](https://docs.sprig.com/docs/account-and-settings/configure.md)
+- [Plans and Billing](https://docs.sprig.com/docs/account-and-settings/plans-teams-and-billing.md)
+- [Team Management & Roles](https://docs.sprig.com/docs/account-and-settings/team-management-roles/index.md)
+- [Products and Environments](https://docs.sprig.com/docs/account-and-settings/team-management-roles/products-and-environments.md)
+- [Roles & Permissions](https://docs.sprig.com/docs/account-and-settings/team-management-roles/roles-permissions.md): How to help your team sign up for Sprig
+- [Usage](https://docs.sprig.com/docs/account-and-settings/usage-muu/index.md): Learn about how Sprig tracks usage and how it impacts your plan limits
+- [Usage - Legacy MTU & Study Model](https://docs.sprig.com/docs/account-and-settings/usage-muu/usage.md): Learn about how Sprig tracks usage and how it impacts your account limits
+- [Android Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/android-changelog.md)
+- [Flutter Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/flutter-changelog.md)
+- [SDK Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/index.md)
+- [iOS Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/ios-changelog.md)
+- [React Native Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/react-native-changelog.md)
+- [Segment Android Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/segment-android-changelog.md)
+- [Segment iOS Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/segment-ios-changelog.md)
+- [Segment React Native Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/segment-react-native-changelog.md)
+- [Sprig Bundled Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/sprig-bundled-changelog.md)
+- [Web Changelog](https://docs.sprig.com/docs/developer-center/sdk-changelog/web-changelog.md)
+- [Features by SDK Versions](https://docs.sprig.com/docs/developer-center/sprig-sdk/features-by-sdk-version.md)
+- [Sprig SDK](https://docs.sprig.com/docs/developer-center/sprig-sdk/index.md)
+- [SDK End of Life (EOL) Policy](https://docs.sprig.com/docs/developer-center/sprig-sdk/sdk-end-of-life-eol-policy.md)
+- [SDK & Traffic](https://docs.sprig.com/docs/developer-center/sprig-sdk/sdk-traffic.md): See most recent SDK releases & visitor traffic by SDK version in app
+- [Styling Studies with Custom CSS](https://docs.sprig.com/docs/developer-center/styling-your-studies-with-custom-css.md)
+- [Android SDK](https://docs.sprig.com/docs/installation/introduction-mobile/android-sdk-installation/index.md)
+- [Flutter Plugin](https://docs.sprig.com/docs/installation/introduction-mobile/flutter_plugin.md)
+- [Mobile](https://docs.sprig.com/docs/installation/introduction-mobile/index.md)
+- [iOS SDK](https://docs.sprig.com/docs/installation/introduction-mobile/ios-sdk-installation.md)
+- [React Native SDK](https://docs.sprig.com/docs/installation/introduction-mobile/react-native-module.md): Easily install Sprig into your React Native mobile apps via Segment to track behavior and send targeted In-Product Surveys based on your users' characteristics and actions they take in your product.
+- [Segment Android](https://docs.sprig.com/docs/installation/introduction-mobile/segment-android.md): Leverage the Segment Android CDP to easily install Sprig into your Android mobile app. This integration makes it easy to send targeted In-Product Surveys based on your users' characteristics and actions they take in your product.
+- [Segment iOS](https://docs.sprig.com/docs/installation/introduction-mobile/segment-ios.md): Easily install Sprig into your iOS app via Segment to track your users' behavior and send targeted In-Product Surveys based on your users' characteristics and actions they take in your product.
+- [Segment React Native](https://docs.sprig.com/docs/installation/introduction-mobile/segment-react-native.md): Leverage the Segment React Native CDP to easily install Sprig into your React Native mobile app. This integration makes it easy to send targeted In-Product Surveys based on your users' characteristics and actions they take in your product.
+- [Web](https://docs.sprig.com/docs/installation/introduction-web/index.md)
+- [Segment Web](https://docs.sprig.com/docs/installation/introduction-web/segment-web.md): Leverage the Segment Web CDP to easily install Sprig into your web product. This integration makes it easy to send targeted In-Product Surveys based on your users' characteristics and actions they take in your product.
+- [Google tag Manager](https://docs.sprig.com/docs/installation/introduction-web/web-google-tag-manager.md)
+- [JavaScript SDK](https://docs.sprig.com/docs/installation/introduction-web/web-javascript.md)
+- [Data Collection](https://docs.sprig.com/docs/integrations/data-collection/index.md)
+- [User Interviews](https://docs.sprig.com/docs/integrations/data-collection/user-interviews.md): Integrate Sprig and User Interviews to collect real-time insights from the right users.
+- [Amplitude](https://docs.sprig.com/docs/integrations/data-destinations/amplitude.md)
+- [Data destinations](https://docs.sprig.com/docs/integrations/data-destinations/index.md): Integrate Sprig insights with your company's processes and workflows
+- [Mixpanel](https://docs.sprig.com/docs/integrations/data-destinations/mixpanel.md)
+- [Segment Streams](https://docs.sprig.com/docs/integrations/data-destinations/segment-streams.md): Export data to Segment
+- [Slack](https://docs.sprig.com/docs/integrations/data-destinations/slack.md)
+- [Webhooks](https://docs.sprig.com/docs/integrations/data-destinations/webhooks.md): Customer Data Platform
+- [Zapier](https://docs.sprig.com/docs/integrations/data-destinations/zapier.md): Business Workflow Automation
+- [Census](https://docs.sprig.com/docs/integrations/data-sources-introduction/census.md)
+- [Data Sources](https://docs.sprig.com/docs/integrations/data-sources-introduction/index.md): Pull data into Sprig from other products and systems in your organization
+- [LaunchDarkly](https://docs.sprig.com/docs/integrations/data-sources-introduction/launchdarkly.md): Use LaunchDarkly alongside Sprig in order to compare & segment results based on the user’s flag variations.
+- [Optimizely](https://docs.sprig.com/docs/integrations/data-sources-introduction/optimizely.md): Use Optimizely alongside Sprig in order to compare & segment results based on user experiments/variations.
+- [RudderStack](https://docs.sprig.com/docs/integrations/data-sources-introduction/rudderstack.md)
+- [Segment Classic](https://docs.sprig.com/docs/integrations/data-sources-introduction/segment-classic.md)
+- [Importing a CSV file](https://docs.sprig.com/docs/integrations/data-sources-introduction/uploading-a-csv.md)
+- [Sprig AI Agents Overview](https://docs.sprig.com/docs/native-ai/ai-analysis.md)
+- [Conjoint](https://docs.sprig.com/docs/native-ai/conjoint.md)
+- [Create Surveys with MCP](https://docs.sprig.com/docs/native-ai/create-surveys-with-mcp.md)
+- [Cross Tab Analysis Across Segments](https://docs.sprig.com/docs/native-ai/cross-tab-analysis-across-segments.md)
+- [Cross Tab Analysis Across Themes](https://docs.sprig.com/docs/native-ai/cross-tab-analysis-across-themes.md)
+- [AI File Upload Builder](https://docs.sprig.com/docs/native-ai/design-agent/ai-file-upload-builder.md)
+- [AI Translations](https://docs.sprig.com/docs/native-ai/design-agent/ai-translations.md)
+- [Design Agent](https://docs.sprig.com/docs/native-ai/design-agent/index.md)
+- [Prompt Based Builder](https://docs.sprig.com/docs/native-ai/design-agent/prompt-based-builder.md)
+- [AI Dynamic Questions](https://docs.sprig.com/docs/native-ai/field-agent/ai-dynamic-questions.md)
+- [AI Follow Ups](https://docs.sprig.com/docs/native-ai/field-agent/ai-follow-ups.md)
+- [Field Agent](https://docs.sprig.com/docs/native-ai/field-agent/index.md)
+- [Gabor Granger](https://docs.sprig.com/docs/native-ai/gabor-granger.md)
+- [MaxDiff](https://docs.sprig.com/docs/native-ai/maxdiff.md)
+- [MCP Prompt Examples](https://docs.sprig.com/docs/native-ai/mcp-prompt-examples.md)
+- [Sprig MCP: How to Connect](https://docs.sprig.com/docs/native-ai/sprig-mcp.md)
+- [Agent Context](https://docs.sprig.com/docs/native-ai/synthesize-agent/agent-context.md)
+- [AI Product Insights & Feed](https://docs.sprig.com/docs/native-ai/synthesize-agent/ai-generated-insights-feed.md)
+- [AI Powered Open Text Analysis](https://docs.sprig.com/docs/native-ai/synthesize-agent/ai-powered-open-text-analysis.md)
+- [AI Replay Analysis (beta)](https://docs.sprig.com/docs/native-ai/synthesize-agent/ai-replay-themes.md)
+- [AI Study Reports](https://docs.sprig.com/docs/native-ai/synthesize-agent/ai-study-reports.md): Go from raw responses to insights and opportunites in minutes with Sprig's Synthesize Agent.
+- [Synthesize Agent](https://docs.sprig.com/docs/native-ai/synthesize-agent/index.md)
+- [Attributes](https://docs.sprig.com/docs/shared-study-foundations/attributes.md)
+- [Dashboards and Folders](https://docs.sprig.com/docs/shared-study-foundations/dashboards-and-folders.md)
+- [Completing & Editing Studies](https://docs.sprig.com/docs/shared-study-foundations/editing-an-active-study-completing-a-study.md)
+- [Code Events](https://docs.sprig.com/docs/shared-study-foundations/events/code-events.md)
+- [Events](https://docs.sprig.com/docs/shared-study-foundations/events/index.md)
+- [No Code Event URLs](https://docs.sprig.com/docs/shared-study-foundations/events/matching-page-urls.md): Fine control over how your studies are triggered.
+- [No Code Events](https://docs.sprig.com/docs/shared-study-foundations/events/no-code-events.md)
+- [Exporting Study Data (CSV)](https://docs.sprig.com/docs/shared-study-foundations/export-survey-data.md): Export a CSV file with your Study data
+- [Interpreting Studies](https://docs.sprig.com/docs/shared-study-foundations/interpreting-studies.md): Understanding your study's progress.
+- [Add an Image to a Question](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/add-an-image-to-question.md)
+- [Conversational Surveys](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/conversational-surveys.md)
+- [Groups](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/groups.md)
+- [Study Creation Foundations](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/index.md)
+- [Multi Language Surveys](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/multi-language-support.md): Launch Surveys and target users in their native language
+- [Question Types](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/questions.md): Learn about the question types available in Sprig.
+- [Study Triggers & User Filters](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/study-triggers-user-filters-and-groups-copy.md): This document explains how to add Study Triggers and User Filters to a study in Sprig
+- [Study Logic](https://docs.sprig.com/docs/shared-study-foundations/main-tasks/survey-logic.md): Control survey flow and personalize surveys with powerful configuration tools.
+- [Reviewing Responses & Insights](https://docs.sprig.com/docs/shared-study-foundations/responses-and-insights.md)
+- [Overview of Shared Foundations](https://docs.sprig.com/docs/shared-study-foundations/shared-foundations.md)
+- [Feedback Creation](https://docs.sprig.com/docs/sprig-studies/feedback/feedback-creation.md)
+- [Feedback FAQ's](https://docs.sprig.com/docs/sprig-studies/feedback/feedback-faqs.md)
+- [Feedback Look and Feel](https://docs.sprig.com/docs/sprig-studies/feedback/feedback-look-and-feel.md): Apply custom Look & Feel styling to match your product or website branding!
+- [Feedback](https://docs.sprig.com/docs/sprig-studies/feedback/index.md)
+- [Heatmap Creation](https://docs.sprig.com/docs/sprig-studies/heatmaps/heatmap-creation.md): Heatmaps allow you to visualize interactions and identify painpoints with a specific webpage
+- [Heatmaps](https://docs.sprig.com/docs/sprig-studies/heatmaps/index.md): Heatmaps allow you to visualize interactions and identify painpoints with a specific webpage
+- [In-Product Surveys](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/index.md): Survey specific groups of users in-product to capture their real-time feedback.
+- [Survey Look and Feel](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/microsurvey-look-and-feel.md): Apply custom Look & Feel to match your product or website branding!
+- [Study Testing](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/study-testing.md): Test a draft study directly on your website or mobile application - no staging/development environment needed!
+- [Response Options](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/survey-creation/custom-audience-sampling.md)
+- [In-Product Survey Creation](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/survey-creation/index.md)
+- [Link Studies](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/survey-creation/link-survey.md): Sprig Link Survey Basics
+- [Recontact Waiting Period](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/survey-creation/resurvey-waiting-period.md)
+- [Survey Diagnostics Funnel](https://docs.sprig.com/docs/sprig-studies/in-product-surveys/survey-diagnostics-funnel.md): Understand the estimated population of end users at particular steps in Sprig’s survey selection and contact engine
+- [Prototype Testing](https://docs.sprig.com/docs/sprig-studies/prototype-studies/index.md)
+- [Google Drive Files in Sprig Prototypes](https://docs.sprig.com/docs/sprig-studies/prototype-studies/prototype-testing/google-drive-prototypes.md)
+- [Embedding Prototypes in Sprig Surveys](https://docs.sprig.com/docs/sprig-studies/prototype-studies/prototype-testing/index.md)
+- [Replays](https://docs.sprig.com/docs/sprig-studies/replays/index.md): Capture clips based on user actions and attributes to see how specific users experience your product.
+- [Replay Creation](https://docs.sprig.com/docs/sprig-studies/replays/replay-creation/index.md): Record clips based on user attributes or event triggering to see how specific users experience your product.
+- [Mobile Replays](https://docs.sprig.com/docs/sprig-studies/replays/replay-creation/mobile-replays.md): Capture clips based on user actions and attributes to see how specific users experience your mobile product.
+- [Frustration Signals - Public Beta](https://docs.sprig.com/docs/sprig-studies/replays/session-replay-clip-playback/frustration-signals.md): Identify friction points in Replay clips to better understand user behavior and enhance your product experience.
+- [Replay Clip Playback](https://docs.sprig.com/docs/sprig-studies/replays/session-replay-clip-playback/index.md)
+- [Bot Detection](https://docs.sprig.com/docs/sprig-studies/surveys/bot-detection.md): Ensure you're only reviewing responses from real respondents by using Bot Detection.
+- [Delivering Surveys](https://docs.sprig.com/docs/sprig-studies/surveys/delivering-surveys.md)
+- [Surveys](https://docs.sprig.com/docs/sprig-studies/surveys/index.md): Sprig Surveys enable you to move faster and influence decisions with modern surveys that are easy to build.
+- [Response-based Quotas for Surveys](https://docs.sprig.com/docs/sprig-studies/surveys/quotas-for-surveys.md)
+- [Creating Surveys](https://docs.sprig.com/docs/sprig-studies/surveys/survey-creation.md)
+- [How Often to Question?](https://docs.sprig.com/docs/study-best-practices/how-often-to-survey.md): Best practices for balancing getting insights with a good user experience
+- [Measuring CX](https://docs.sprig.com/docs/study-best-practices/measuring-cx/index.md): Learn how to use Sprig to understand your customer experience
+- [Net Promoter Score](https://docs.sprig.com/docs/study-best-practices/measuring-cx/nps.md): How does it work? Promoters, Passives, and Detractors, explained.
+- [SaaS CX Playbook](https://docs.sprig.com/docs/study-best-practices/measuring-cx/saas-cx-playbook.md): Read about Sprig's recommended Customer Experience KPIs for Software as a Service (SaaS) Businesses
+- [Should You be Tracking NPS?](https://docs.sprig.com/docs/study-best-practices/measuring-cx/should-you-be-tracking-nps.md): Sprig's guide to the much-debated customer loyalty metric
+- [Startup CX Playbook](https://docs.sprig.com/docs/study-best-practices/measuring-cx/startup-cx-playbook.md): Everything you need to find product/market fit
+- [Top 4 Studies](https://docs.sprig.com/docs/study-best-practices/measuring-cx/top-4-studies.md): Make the most of the platform by asking these questions
+- [Recruiting Participants](https://docs.sprig.com/docs/study-best-practices/recruiting-participants.md)
+- [Writing Questions](https://docs.sprig.com/docs/study-best-practices/writing-questions/index.md)
+- [Writing In-Product Surveys](https://docs.sprig.com/docs/study-best-practices/writing-questions/writing-studies.md): Tips for creating custom in-product surveys
+- [Sprig Support](https://docs.sprig.com/docs/support-privacy-and-technical/support.md)
+- [Privacy and Security](https://docs.sprig.com/docs/support-privacy-and-technical/technical-considerations/index.md)
+- [Mobile App Replays](https://docs.sprig.com/docs/support-privacy-and-technical/technical-considerations/mobile-replay-privacy-performance.md)
+- [Replay and Heatmap Privacy](https://docs.sprig.com/docs/support-privacy-and-technical/technical-considerations/replay-and-heatmap-privacy.md)
+- [Web Replays and Heatmaps](https://docs.sprig.com/docs/support-privacy-and-technical/technical-considerations/replay-privacy.md)
+- [Quick Start Guide](https://docs.sprig.com/docs/welcome-to-sprig/quick-start-guide/index.md): Create & launch your first study in minutes!
+- [About Sprig](https://docs.sprig.com/docs/welcome-to-sprig/what-is-sprig.md)
+- [Overview](https://docs.sprig.com/reference/sprig-api/overview.md): Authenticate, format, and rate-limit your requests to the Sprig API.
+- [Retrieve Responses](https://docs.sprig.com/reference/sprig-api/v1/get-v1-responses-1.md): Use this endpoint to retrieve responses from your studies. This endpoint allows you to retrieve up to 1000 responses at a time.
+- [Retrieve Surveys](https://docs.sprig.com/reference/sprig-api/v1/get-v1-surveys-1.md): Studies were formerly surveys. This endpoint allows for the export of study configurations. The name will eventually change to Study, but at this time survey will be accepted anywhere study appears in the API. This endpoint allows you retrieve up to 1000 surveys at a time.
+- [Retrieve Themes](https://docs.sprig.com/reference/sprig-api/v1/get-v1-themes-1.md): Use this endpoint to retrieve themes, along with the responses that are associated with each theme, from your studies.
+- [Retrieve a User](https://docs.sprig.com/reference/sprig-api/v2/get-v2-users-userid-1.md): Endpoint that allows the retrieval of a visitor based on a known User ID. This endpoint can only recover visitors with user IDs, so please ensure your Sprig implementation has user tracking configured correctly based on your SDK installation: /docs/Installation/introduction-web/index This endpoint w…
+- [Upsert a User](https://docs.sprig.com/reference/sprig-api/v2/post-user-v2-1.md): Endpoint facilitating the programatic upsertion of a user. Users must be upserted 1 at a time. Events created for this user are for historical tracking purposes. Any event tied to a user through this endpoint will not trigger a study through Sprig's SDK. Attributes and attribute values can be create…
+- [Purge Visitors](https://docs.sprig.com/reference/sprig-api/v2/post-v2-purge-visitors-1.md): The Purge Visitors API helps teams comply with end-user bulk data deletion requests mandated by laws like GDPR and CCPA. This endpoint will delete users and all related user data identified by a set of emails, visitor IDs, or user IDs. Purge requests default to being processed 10 days after submissi…
+- [Video Tutorials](https://docs.sprig.com/tutorials.md)
+
+## OpenAPI Specs
+
+- [sprig-api](https://docs.sprig.com/reference/sprig-api.json)

@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: sprig-export-study-results.md
+    name: Export Sprig study results
+    api: openapi/sprig-api-openapi-original.json
+    operations: [get-v1-surveys, get-v1-responses, get-v1-themes]
+  - file: sprig-manage-users-and-privacy.md
+    name: Manage Sprig users and honor privacy requests
+    api: openapi/sprig-api-openapi-original.json
+    operations: [post-user-v2, get-v2-users-:userId, post-v2-purge-visitors]

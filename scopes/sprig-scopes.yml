@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://mcp.sprig.com/.well-known/oauth-authorization-server
+docs: https://docs.sprig.com/docs/native-ai/sprig-mcp
+notes: >-
+  Sprig's REST API (api.sprig.com) authenticates with a static API key
+  (Authorization: API-Key / Bearer). OAuth 2.0 scopes are published for the
+  Sprig MCP server (mcp.sprig.com), whose authorization server is api.sprig.com.
+  Scopes below are taken verbatim from the RFC 8414 / RFC 9728 discovery metadata.
+schemes:
+  - name: OAuth2
+    source: well-known/sprig-oauth-authorization-server.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://app.sprig.com/oauth/authorize
+        tokenUrl: https://api.sprig.com/oauth/token
+        registrationUrl: https://api.sprig.com/oauth/register
+        pkce: S256
+scopes:
+  - scope: environments:read
+    description: Read access to Sprig environments (product/environment metadata).
+    flows: [authorizationCode]
+  - scope: surveys:read
+    description: Read access to survey/study configurations.
+    flows: [authorizationCode]
+  - scope: surveys:write
+    description: Create and modify surveys/studies (e.g. drafting studies from AI clients).
+    flows: [authorizationCode]
+  - scope: responses:read
+    description: Read access to study responses.
+    flows: [authorizationCode]
+  - scope: themes:read
+    description: Read access to AI-identified themes and their associated responses.
+    flows: [authorizationCode]

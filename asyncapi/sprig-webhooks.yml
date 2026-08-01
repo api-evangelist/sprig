@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sprig.com/docs/integrations/data-destinations/webhooks
+spec_type: Webhooks
+transport: https-post
+format: application/json
+authentication:
+  style: bearer-token
+  notes: >-
+    Configure a Bearer Token API Secret in the destination; "Bearer" is prepended
+    to the Authorization header on outgoing webhook requests.
+configuration:
+  location: Integrations > Destinations > Webhook
+  per_scope: [Product, Environment]
+  environments: [Production, Development]
+  test: Use the "Test Webhook" button in the app.
+common_fields:
+  - id
+  - environmentId
+  - surveyId
+  - surveyName
+  - eventType
+  - timestamp
+  - visitorId
+  - userId
+  - email
+  - attributes
+events:
+  - type: Answer Submitted
+    description: A user submits an answer to a specific question.
+    extra_fields: [response, question, questionType, responseGroupUid, selectedIndexes, triggeringEvent]
+  - type: Study Submitted
+    description: A user completes and submits a study.
+    extra_fields: [platform, questions, responseGroupUid, action]
+  - type: Study Sent
+    description: Sprig triggers and delivers a study.
+    extra_fields: [platform, action, triggeringEvent, customMetadata]
+  - type: Study Seen
+    description: A user views a study.
+    extra_fields: [platform, action, triggeringEvent, customMetadata]
+  - type: Theme Identified
+    description: Sprig identifies a new theme associated with a study.
+    extra_fields: [themename, updatedAt, productId, questionText, questionType]
+  - type: Study Status Changed
+    description: A study becomes paused, completed, etc.
+    extra_fields: [status, oldStatus, questions]
+other_destinations:
+  - Segment Streams
+  - Slack
+  - Zapier
+  - Amplitude
+  - Mixpanel
+notes: >-
+  Sprig documents a webhook event surface but does not publish an AsyncAPI
+  document; captured here as a webhook catalog (type Webhooks). No payload
+  signing/verification or retry policy is documented beyond the bearer token.

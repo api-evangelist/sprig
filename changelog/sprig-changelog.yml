@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.sprig.com/changelog
+scheme: dated
+notes: >-
+  Sprig maintains a dated product changelog (and per-platform SDK changelogs).
+  Recent window captured below; see source for full history. No breaking changes
+  in the recent window.
+entries:
+  - date: '2026-07-05'
+    title: AI File Upload — more survey options
+    breaking: false
+    highlight: MaxDiff, voice/video, and AI Dynamic Questions support added to AI File Upload.
+  - date: '2026-07-05'
+    title: AI Translations
+    breaking: false
+    highlight: Instantly translate entire surveys across multiple languages.
+  - date: '2026-07-01'
+    title: Response-based Quotas for Surveys
+    breaking: false
+    highlight: Segment targeting via screener questions plus response caps.
+  - date: '2026-07-01'
+    title: Add images to questions
+    breaking: false
+    highlight: Media upload available for most question types across surveys and in-product studies.
+  - date: '2026-07-01'
+    title: Hide custom branding on surveys
+    breaking: false
+    highlight: Enterprise-only setting to remove logo and brand colors from shared surveys.
+  - date: '2026-06-29'
+    title: Surveys refreshed UX
+    breaking: false
+    highlight: Forward button repositioned, autofocus removed, Matrix questions expand horizontally.
+  - date: '2026-06-23'
+    title: Create Surveys via MCP
+    breaking: false
+    highlight: Draft Sprig studies directly from Claude, ChatGPT, and other AI clients via MCP.
+sdk_changelogs: https://docs.sprig.com/docs/developer-center/sdk-changelog

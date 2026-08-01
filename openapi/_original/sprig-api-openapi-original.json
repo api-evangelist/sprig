@@ -1,0 +1,1803 @@
+{
+  "components": {
+    "parameters": {
+      "Authorization-API-Key": {
+        "description": "API-Key YOUR_API_KEY",
+        "in": "header",
+        "name": "Authorization",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Authorization-Bearer": {
+        "description": "Bearer YOUR_API_KEY",
+        "in": "header",
+        "name": "Authorization",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "cursor": {
+        "description": "A Base64 encoded string representing an opaque cursor position",
+        "in": "query",
+        "name": "cursor",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "end": {
+        "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time",
+        "in": "query",
+        "name": "end",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "limit": {
+        "description": "Specific number of results to return",
+        "in": "query",
+        "name": "limit",
+        "required": false,
+        "schema": {
+          "maximum": 1000,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "sid": {
+        "description": "An integer id for a specific Survey",
+        "in": "query",
+        "name": "sid",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "start": {
+        "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time",
+        "in": "query",
+        "name": "start",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "status": {
+        "description": "One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED",
+        "in": "query",
+        "name": "status",
+        "required": false,
+        "schema": {
+          "items": {
+            "enum": [
+              "IN_PROGRESS",
+              "PAUSED",
+              "COMPLETED",
+              "DRAFT",
+              "ARCHIVED",
+              "NEW"
+            ],
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "responses": {
+      "202": {
+        "description": "Accepted"
+      },
+      "400": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "description": "Bad Request"
+      },
+      "403": {
+        "description": "You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code."
+      },
+      "404": {
+        "description": "Not Found"
+      },
+      "422": {
+        "description": "Unprocessable Entity"
+      },
+      "429": {
+        "description": "Your application has made too many requests in too short a time."
+      },
+      "500": {
+        "description": "Something went wrong on Sprig's side. These are very rare :)"
+      }
+    },
+    "schemas": {
+      "User": {
+        "description": "The User object defines a visitor in the Sprig system that has registered on your site.",
+        "properties": {
+          "attributes": {
+            "properties": {
+              "attribute-name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "email": {
+            "format": "email",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier for the given user.",
+            "type": "string"
+          }
+        },
+        "title": "User",
+        "type": "object",
+        "x-examples": {
+          "v1 User": {
+            "value": {
+              "email": "user@example.com",
+              "id": "6f035de1887002da5a191784eb0c38de5a3e23dd"
+            }
+          }
+        }
+      },
+      "Userv2": {
+        "description": "API V2 user model",
+        "properties": {
+          "attributes": {
+            "type": "object"
+          },
+          "createdAt": {
+            "type": "number"
+          },
+          "events": {
+            "items": {
+              "properties": {
+                "count": {
+                  "type": "number"
+                },
+                "createdAt": {
+                  "type": "number"
+                },
+                "event": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "externalUserId": {
+            "minLength": 1,
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "title": "",
+        "type": "object",
+        "x-examples": {
+          "V2 User": {
+            "attributes": {
+              "completed_flow": false,
+              "plan": "enterprise"
+            },
+            "createdAt": 1612739790947,
+            "events": [
+              {
+                "count": 1,
+                "createdAt": 1612739790947,
+                "event": "Clicked Signup",
+                "updatedAt": 1612739912314
+              }
+            ],
+            "id": "a926111b-fa62-49f7-8666-2c94ca8b18fc"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Use `API-Key YOUR_API_KEY` for v2 endpoints or `Bearer YOUR_API_KEY` for export endpoints."
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "support@sprig.com",
+      "name": "Support"
+    },
+    "description": "Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.\n\nWhile traditional studies are slow, difficult to target, and lack context, Sprig studies are delivered automatically to specific users at specific moments throughout the customer journey — all within the product experience.\n\nThis API provides tools to manage users and studies. User management is used if you are segmenting your samples between visitors that will be tracked with an ID and unregistered visitors. Study export tools will allow you to take results data and send it to another data store or format results for presentation in other applications",
+    "title": "Sprig API",
+    "version": "2.2.1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/v1/responses": {
+      "get": {
+        "description": "Use this endpoint to retrieve responses from your studies. This endpoint allows you to retrieve up to 1000 responses at a time.\n",
+        "operationId": "get-v1-responses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/end"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          },
+          {
+            "$ref": "#/components/parameters/sid"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization-Bearer"
+          },
+          {
+            "description": "true/false(default). If true, the API will return visitorSnapshots, which contains all events, attributes, triggeringEvent, and eventProperties set for the visitor at the time of survey delivery.",
+            "in": "query",
+            "name": "with_snapshots",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "true/false (default). If true, the API will return the page URL from which the survey was taken.",
+            "in": "query",
+            "name": "with_urls",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "true/false (default). If true, the API will return the metadata JSON blob containing details available from the client.",
+            "in": "query",
+            "name": "with_meta",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "true/false (default). If true, the API will return any custom metadata associated with the response (applicable to link platform surveys only).",
+            "in": "query",
+            "name": "with_custom_metadata",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "true/false (default). If true, the API will return the responses that have been previously deleted.",
+            "in": "query",
+            "name": "with_deleted_responses",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "consent/legal example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2023-10-19T17:04:26.253Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "Consent / Legal Question",
+                          "questionType": "CONSENTLEGAL",
+                          "response": {
+                            "submitted": true
+                          },
+                          "responseGroupUid": "9fa86a17-82b1-423a-979a-30ee35ada562",
+                          "surveyId": 1,
+                          "updatedAt": "2023-10-19T17:04:26.253Z",
+                          "visitorId": 0,
+                          "visitorUuid": "3b7b4806-c082-4f0c-a8f0-b869121f47cb"
+                        }
+                      ]
+                    }
+                  },
+                  "likert example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2024-01-26T18:58:32.835Z",
+                          "questionId": 2,
+                          "questionText": "How interested are you in using Sprig to capture passive in-product feedback?",
+                          "questionType": "LIKERT",
+                          "response": 5,
+                          "responseGroupUid": "b96b109f-040c-412a-9ca4-4d694ccaec90",
+                          "surveyId": 1,
+                          "updatedAt": "2024-01-26T18:58:32.835Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ba050493-0292-4099-9262-8e18c7406e81"
+                        }
+                      ]
+                    }
+                  },
+                  "matrix example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2024-01-26T18:59:12.629Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "How important are the following features?",
+                          "questionType": "MATRIX",
+                          "response": {
+                            "Ability to do x": "3 - Neutral",
+                            "Create a bad surveys": "1 - Not Important",
+                            "Display something on something else": "2",
+                            "Receiving high quality responses": "5 - Very Important"
+                          },
+                          "responseGroupUid": "45b8d797-c326-4824-bc24-7b2c54315ef2",
+                          "surveyId": 1,
+                          "updatedAt": "2024-01-26T18:59:12.629Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ba050493-0292-4099-9262-8e18c7406e81"
+                        }
+                      ]
+                    }
+                  },
+                  "multiple choice example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2022-07-27T21:12:10.875Z",
+                          "externalUserId": "2603",
+                          "questionId": 2,
+                          "questionText": "What options did you prefer?",
+                          "questionType": "MULTIPLECHOICE",
+                          "response": "Option 2",
+                          "responseGroupUid": "b96b109f-040c-412a-9ca4-4d694ccaec90",
+                          "selectedIndexes": 2,
+                          "surveyId": 1,
+                          "updatedAt": "2022-07-27T21:12:10.875Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ba050493-0292-4099-9262-8e18c7406e81"
+                        }
+                      ]
+                    }
+                  },
+                  "multiple select example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2022-07-27T21:12:13.159Z",
+                          "externalUserId": "2603",
+                          "questionId": 201373,
+                          "questionText": "What options did you prefer?",
+                          "questionType": "MULTIPLESELECT",
+                          "response": "Option 2",
+                          "responseGroupUid": "b96b109f-040c-412a-9ca4-4d694ccaec90",
+                          "selectedIndexes": [
+                            2,
+                            3,
+                            4
+                          ],
+                          "surveyId": 1,
+                          "updatedAt": "2022-07-27T21:12:13.159Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ba050493-0292-4099-9262-8e18c7406e81"
+                        }
+                      ]
+                    }
+                  },
+                  "nps example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2023-10-13T21:46:25.026Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "NPS Question",
+                          "questionType": "NPS",
+                          "response": 5,
+                          "responseGroupUid": "9d52a356-7b13-41ce-b0b4-95761512caf6",
+                          "surveyId": 1,
+                          "updatedAt": "2023-10-13T21:50:12.658Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ca0af590-f7d4-47b9-b1b4-38dad61e1755"
+                        }
+                      ]
+                    }
+                  },
+                  "open text example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2024-01-26T18:59:45.553Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "What questions do you have about Feedback button surveys?",
+                          "questionType": "OPEN",
+                          "response": "So many questions. I would love to follow up with someone to discuss.",
+                          "responseGroupUid": "234ce7e2-531b-4549-a0f7-faf99583e6ea",
+                          "surveyId": 1,
+                          "updatedAt": "2024-01-26T18:59:45.553Z",
+                          "visitorId": 0,
+                          "visitorUuid": "b8e8107b-aa0a-4126-a89a-cfc735b44a77"
+                        }
+                      ]
+                    }
+                  },
+                  "texturl prompt example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2023-12-14T18:04:28.573Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "Explore the Create with AI feature. Pause once you've generated ideas and click Next.",
+                          "questionType": "TEXTURLPROMPT",
+                          "response": null,
+                          "responseGroupUid": "1b0e6ae6-8167-4ed0-a275-4a9cdb422522",
+                          "surveyId": 1,
+                          "updatedAt": "2023-12-14T18:04:28.573Z",
+                          "visitorId": 0,
+                          "visitorUuid": "f723900e-c4ac-4f69-b9a9-07400dd6076f"
+                        }
+                      ]
+                    }
+                  },
+                  "videovoice example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2022-03-18T05:47:56.857Z",
+                          "externalUserId": null,
+                          "questionId": 2,
+                          "questionText": "Sprig has a video question for you",
+                          "questionType": "VIDEOVOICE",
+                          "response": {
+                            "downloadUrl": "https://stream.mux.com/random_id/high.mp4",
+                            "duration": 42.923667,
+                            "mediaType": "video",
+                            "transcription": "Hey there! I hope these docs are helpful and informative. If you have any questions, please reach out to your dedicated Customer Support Manager or feel free to email us at support@sprig.com",
+                            "updatedAt": "2023-10-18T05:50:57.208Z",
+                            "uploadId": "uploadId",
+                            "videoUrl": "https://stream.mux.com/random_id.video"
+                          },
+                          "responseGroupUid": "f723900e-c4ac-4f69-b9a9-07400dd6076f",
+                          "surveyId": 1,
+                          "updatedAt": "2022-03-18T05:52:07.910Z",
+                          "visitorId": 0,
+                          "visitorUuid": "d86c1335-21ca-4417-9e00-6370db899727"
+                        }
+                      ]
+                    }
+                  },
+                  "with custom metadata example": {
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "createdAt": "2023-07-20T00:41:57.074Z",
+                          "customMetadata": {},
+                          "externalUserId": null,
+                          "questionId": 0,
+                          "questionText": "How likely are you to recommend Your Product to a friend or colleague?",
+                          "questionType": "NPS",
+                          "response": 9,
+                          "responseGroupUid": "6bc0c9b7-af36-4d81-a03c-b600fd23a5e5",
+                          "surveyId": 0,
+                          "updatedAt": "2023-07-20T00:41:57.074Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ab85c1ab-59fd-4855-b501-a7ab80419cf8"
+                        }
+                      ]
+                    }
+                  },
+                  "with deleted responses example": {
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "createdAt": "2023-07-20T00:41:57.074Z",
+                          "deletedAt": "2023-07-20T00:41:57.074Z",
+                          "externalUserId": null,
+                          "questionId": 0,
+                          "questionText": "How likely are you to recommend Your Product to a friend or colleague?",
+                          "questionType": "NPS",
+                          "response": 9,
+                          "responseGroupUid": "6bc0c9b7-af36-4d81-a03c-b600fd23a5e5",
+                          "surveyId": 0,
+                          "updatedAt": "2023-07-20T00:41:57.074Z",
+                          "visitorId": 0,
+                          "visitorUuid": "ab85c1ab-59fd-4855-b501-a7ab80419cf8"
+                        }
+                      ]
+                    }
+                  },
+                  "with meta example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2023-05-29T19:57:55.291Z",
+                          "externalUserId": null,
+                          "meta": {
+                            "browser": "Chrome",
+                            "client": {
+                              "height": 969,
+                              "width": 1920
+                            },
+                            "href": "https://a.sprig.com/yoursurvey",
+                            "language": "en-US",
+                            "os": "Windows",
+                            "screen": {
+                              "height": 1080,
+                              "width": 1920
+                            },
+                            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+                          },
+                          "questionId": 0,
+                          "questionText": "How likely are you to recommend Sprig to a friend or colleague?",
+                          "questionType": "NPS",
+                          "response": 9,
+                          "responseGroupUid": "51e167b8-f2b0-44d0-9aa3-bec160e9e1cd",
+                          "surveyId": 0,
+                          "updatedAt": "2023-05-29T19:57:55.291Z",
+                          "visitorId": 0,
+                          "visitorUuid": "f0844b38-5969-483d-8963-4b240ce8ef80"
+                        }
+                      ]
+                    }
+                  },
+                  "with snapshots example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2022-07-20T00:41:57.074Z",
+                          "externalUserId": null,
+                          "questionId": 0,
+                          "questionText": "How likely are you to recommend Luke Test to a friend or colleague?",
+                          "questionType": "NPS",
+                          "response": 9,
+                          "responseGroupUid": "6bc0c9b7-af36-4d81-a03c-b600fd23a5e5",
+                          "surveyId": 0,
+                          "updatedAt": "2022-07-20T00:41:57.074Z",
+                          "visitorId": 0,
+                          "visitorSnapshot": {
+                            "attributes": {},
+                            "eventProperties": {},
+                            "events": {},
+                            "externalUserId": null,
+                            "responseGroupUid": "18e38583-d6b6-4629-b2ce-c51072308f98",
+                            "triggeringEvent": "event",
+                            "visitorId": "visitor-id"
+                          },
+                          "visitorUuid": "ab85c1ab-59fd-4855-b501-a7ab80419cf8"
+                        }
+                      ]
+                    }
+                  },
+                  "with urls example": {
+                    "value": {
+                      "cursor": "cursor",
+                      "data": [
+                        {
+                          "createdAt": "2023-05-29T19:58:23.028Z",
+                          "externalUserId": null,
+                          "questionId": 0,
+                          "questionText": "Text Url Prompt Question",
+                          "questionType": "TEXTURLPROMPT",
+                          "response": null,
+                          "responseGroupUid": "52845ce4-c41f-484d-8f47-5702cb49f3f5",
+                          "surveyId": 0,
+                          "updatedAt": "2023-05-29T19:58:23.028Z",
+                          "url": "https://a.sprig.com/yoursurvey",
+                          "visitorId": 0,
+                          "visitorUuid": "c180328a-5cc1-4e76-a942-3363412fed51"
+                        },
+                        {
+                          "createdAt": "2023-05-29T19:58:24.188Z",
+                          "externalUserId": null,
+                          "questionId": 1,
+                          "questionText": "Consent Legal Questuion",
+                          "questionType": "CONSENTLEGAL",
+                          "response": {
+                            "submitted": true
+                          },
+                          "responseGroupUid": "52845ce4-c41f-484d-8f47-5702cb49f3f5",
+                          "surveyId": 0,
+                          "updatedAt": "2023-05-29T19:58:24.188Z",
+                          "url": "https://a.sprig.com/yoursurvey",
+                          "visitorId": 0,
+                          "visitorUuid": "c180328a-5cc1-4e76-a942-3363412fed51"
+                        }
+                      ]
+                    }
+                  },
+                  "maxDiff example": {
+                    "summary": "maxDiff example",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "visitorId": 0,
+                          "surveyId": 30405,
+                          "questionId": 239621,
+                          "updatedAt": "2025-11-20T17:46:41.772Z",
+                          "createdAt": "2025-11-20T17:46:19.740Z",
+                          "responseGroupUid": "52558537-3c62-4840-a6da-bf02e2dbe0e6",
+                          "response": [
+                            [
+                              {
+                                "id": 161748,
+                                "option": "Sharks",
+                                "selected": "right"
+                              },
+                              {
+                                "id": 161745,
+                                "option": "Puppies",
+                                "selected": "left"
+                              },
+                              {
+                                "id": 161749,
+                                "option": "Goldfish",
+                                "selected": null
+                              },
+                              {
+                                "id": 161747,
+                                "option": "Parrots",
+                                "selected": null
+                              }
+                            ],
+                            [
+                              {
+                                "id": 161745,
+                                "option": "Puppies",
+                                "selected": null
+                              },
+                              {
+                                "id": 161749,
+                                "option": "Goldfish",
+                                "selected": null
+                              },
+                              {
+                                "id": 161746,
+                                "option": "Kittens",
+                                "selected": "left"
+                              },
+                              {
+                                "id": 161750,
+                                "option": "Snakes",
+                                "selected": "right"
+                              }
+                            ],
+                            [
+                              {
+                                "id": 161749,
+                                "option": "Goldfish",
+                                "selected": null
+                              },
+                              {
+                                "id": 161746,
+                                "option": "Kittens",
+                                "selected": "left"
+                              },
+                              {
+                                "id": 161748,
+                                "option": "Sharks",
+                                "selected": "right"
+                              },
+                              {
+                                "id": 161747,
+                                "option": "Parrots",
+                                "selected": null
+                              }
+                            ],
+                            [
+                              {
+                                "id": 161745,
+                                "option": "Puppies",
+                                "selected": "left"
+                              },
+                              {
+                                "id": 161748,
+                                "option": "Sharks",
+                                "selected": null
+                              },
+                              {
+                                "id": 161747,
+                                "option": "Parrots",
+                                "selected": null
+                              },
+                              {
+                                "id": 161746,
+                                "option": "Kittens",
+                                "selected": "right"
+                              }
+                            ],
+                            [
+                              {
+                                "id": 161750,
+                                "option": "Snakes",
+                                "selected": "right"
+                              },
+                              {
+                                "id": 161746,
+                                "option": "Kittens",
+                                "selected": null
+                              },
+                              {
+                                "id": 161745,
+                                "option": "Puppies",
+                                "selected": "left"
+                              },
+                              {
+                                "id": 161749,
+                                "option": "Goldfish",
+                                "selected": null
+                              }
+                            ]
+                          ],
+                          "questionText": "Sample MaxDiff Data",
+                          "externalUserId": "",
+                          "partnerAnonymousId": "",
+                          "visitorUuid": "47a5cb1c-3548-48d8-8658-6d8356d124db",
+                          "questionType": "MAXDIFF"
+                        }
+                      ]
+                    }
+                  },
+                  "rank order example": {
+                    "summary": "rank order example",
+                    "value": {
+                      "cursor": null,
+                      "data": [
+                        {
+                          "visitorId": 0,
+                          "surveyId": 30402,
+                          "questionId": 239618,
+                          "updatedAt": "2025-11-19T21:56:36.467Z",
+                          "createdAt": "2025-11-19T21:56:36.467Z",
+                          "responseGroupUid": "67d166b1-0691-4577-8909-8007131dbb7b",
+                          "response": {
+                            "apple": 1,
+                            "ball": 2,
+                            "questions": 3
+                          },
+                          "questionText": "rank it",
+                          "externalUserId": "",
+                          "partnerAnonymousId": "",
+                          "visitorUuid": "627d9207-554a-41dc-97ae-f2c44582ce83",
+                          "questionType": "RANKORDER"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "schema": {
+                  "description": "",
+                  "properties": {
+                    "cursor": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "createdAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "customMetadata": {
+                            "description": "The custom metadata of your sprig survey. Only returned when with_custom_metadata is true",
+                            "type": "object"
+                          },
+                          "deletedAt": {
+                            "description": "Only returned when with_deleted_responses is true",
+                            "minLength": 1,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "externalUserId": {
+                            "minLength": 1,
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "meta": {
+                            "description": "The metadata of your sprig survey. Only returned when with_meta is true",
+                            "properties": {
+                              "browser": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "client": {
+                                "properties": {
+                                  "height": {
+                                    "type": "integer"
+                                  },
+                                  "width": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "href": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "language": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "os": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "screen": {
+                                "properties": {
+                                  "height": {
+                                    "type": "integer"
+                                  },
+                                  "width": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "userAgent": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "questionId": {
+                            "type": "number"
+                          },
+                          "questionText": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "questionType": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "response": {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "object"
+                              },
+                              {
+                                "type": "array"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ],
+                            "description": "The response field can return multiple data types (string, integer, object, array, or null) depending on the question type. Please refer to the examples for more information."
+                          },
+                          "responseGroupUid": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "selectedIndexes": {
+                            "anyOf": [
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "array"
+                              }
+                            ],
+                            "description": "The selectedIndexes field returns one of two data types depending on question type. For multiple choice questions, it returns an integer. For multiple select questions, it returns an array of integers. Please refer to the examples for more information."
+                          },
+                          "surveyId": {
+                            "type": "number"
+                          },
+                          "updatedAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "The url of your sprig survey. Only returned when with_urls is true",
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "visitorId": {
+                            "type": "number"
+                          },
+                          "visitorSnapshot": {
+                            "description": "The visitor event, attribute, event property data of a Sprig survey response. Only returned when with_snapshots is true",
+                            "properties": {
+                              "attribtues": {
+                                "type": "object"
+                              },
+                              "eventProperties": {
+                                "type": "object"
+                              },
+                              "events": {
+                                "type": "object"
+                              },
+                              "responseGroupUid": {
+                                "type": "string"
+                              },
+                              "triggeringEvent": {
+                                "type": "string"
+                              },
+                              "visitorId": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "visitorUuid": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "minItems": 1,
+                      "type": "array",
+                      "uniqueItems": true
+                    }
+                  },
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "cursor": "Y3JlYXRlZEF0OjE1ODA5MzAyNzg2OTY=",
+                      "data": [
+                        {
+                          "createdAt": "2020-02-21T23:33:23.248Z",
+                          "externalUserId": "35c52a35-2f59-4d2f-946c-36d19137a95a",
+                          "questionId": 369,
+                          "questionText": "What would make Sprig more valuable for you?",
+                          "questionType": "OPEN",
+                          "response": "A more robust data export api",
+                          "responseGroupUid": "8f41fd42-a034-49b6-8a7f-8a231fd6b49a",
+                          "surveyId": 227,
+                          "updatedAt": "2020-02-21T23:33:23.248Z",
+                          "visitorId": 19720642
+                        },
+                        {
+                          "createdAt": "2020-10-28T21:37:31.028Z",
+                          "externalUserId": null,
+                          "questionId": 226,
+                          "questionText": "What would make Sprig more valuable for you?",
+                          "questionType": "OPEN",
+                          "response": "Something something cheeseburgers",
+                          "responseGroupUid": "18e38583-d6b6-4629-b2ce-c51072308f98",
+                          "surveyId": 154,
+                          "updatedAt": "2020-10-28T21:37:31.028Z",
+                          "visitorId": 33094801
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Retrieve Responses",
+        "tags": [
+          "V1"
+        ]
+      }
+    },
+    "/v1/surveys": {
+      "get": {
+        "description": "Studies were formerly surveys. This endpoint allows for the export of study configurations. The name will eventually change to Study, but at this time survey will be accepted anywhere study appears in the API. This endpoint allows you retrieve up to 1000 surveys at a time.",
+        "operationId": "get-v1-surveys",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/end"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/status"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization-Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example surveys": {
+                    "value": {
+                      "cursor": "Y3JlYXRlZEF0OjE1NTMyMDAxNTMwMTk=",
+                      "data": [
+                        {
+                          "completedAt": "2019-06-12T19:23:35.522Z",
+                          "constraints": [
+                            {
+                              "comparisonType": "gte",
+                              "event": null,
+                              "type": "SESSION_COUNT",
+                              "value": 1
+                            },
+                            {
+                              "comparisonType": "eq",
+                              "event": null,
+                              "type": "TIME_ON_PAGE_DELAY",
+                              "value": 2
+                            }
+                          ],
+                          "createdAt": "2018-07-18T08:02:09.858Z",
+                          "id": 12,
+                          "launchedAt": null,
+                          "name": "Understand Appeal",
+                          "platform": "web",
+                          "questions": [
+                            {
+                              "id": 118,
+                              "options": [],
+                              "optionsProperties": {
+                                "introText": "Thanks for using Sprig. Tell us about your experience.",
+                                "labels": {
+                                  "left": "Not at all interested",
+                                  "right": "Extremely interested"
+                                }
+                              },
+                              "questionText": "How interested are you in using Sprig?",
+                              "routingOptions": null,
+                              "type": "LIKERT"
+                            },
+                            {
+                              "id": 105,
+                              "options": [],
+                              "optionsProperties": null,
+                              "questionText": "What aspect of Sprig is most appealing?",
+                              "routingOptions": null,
+                              "type": "OPEN"
+                            }
+                          ],
+                          "status": "COMPLETED",
+                          "totalResponseLimit": null,
+                          "type": "CONTINUOUS",
+                          "updatedAt": "2019-06-12T19:23:35.522Z"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "schema": {
+                  "description": "",
+                  "properties": {
+                    "cursor": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "completedAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "constraints": {
+                            "items": {
+                              "properties": {
+                                "comparisonType": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "event": {},
+                                "type": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array",
+                            "uniqueItems": true
+                          },
+                          "createdAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "launchedAt": {},
+                          "name": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "platform": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "questions": {
+                            "items": {
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "options": {
+                                  "items": {
+                                    "type": "object"
+                                  },
+                                  "type": "array"
+                                },
+                                "optionsProperties": {
+                                  "nullable": true,
+                                  "properties": {
+                                    "introText": {
+                                      "minLength": 1,
+                                      "type": "string"
+                                    },
+                                    "labels": {
+                                      "properties": {
+                                        "left": {
+                                          "minLength": 1,
+                                          "type": "string"
+                                        },
+                                        "right": {
+                                          "minLength": 1,
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "left",
+                                        "right"
+                                      ],
+                                      "type": "object"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "questionText": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "routingOptions": {},
+                                "type": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array",
+                            "uniqueItems": true
+                          },
+                          "status": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "totalResponseLimit": {},
+                          "type": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "minItems": 1,
+                      "type": "array",
+                      "uniqueItems": true
+                    }
+                  },
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "cursor": "Y3JlYXRlZEF0OjE1NTMyMDAxNTMwMTk=",
+                      "data": [
+                        {
+                          "completedAt": "2019-06-12T19:23:35.522Z",
+                          "constraints": [
+                            {
+                              "comparisonType": "gte",
+                              "event": null,
+                              "type": "SESSION_COUNT",
+                              "value": 1
+                            },
+                            {
+                              "comparisonType": "eq",
+                              "event": null,
+                              "type": "TIME_ON_PAGE_DELAY",
+                              "value": 2
+                            }
+                          ],
+                          "createdAt": "2018-07-18T08:02:09.858Z",
+                          "id": 12,
+                          "launchedAt": null,
+                          "name": "Understand Appeal",
+                          "platform": "web",
+                          "questions": [
+                            {
+                              "id": 118,
+                              "options": [],
+                              "optionsProperties": {
+                                "introText": "Thanks for using Sprig. Tell us about your experience.",
+                                "labels": {
+                                  "left": "Not at all interested",
+                                  "right": "Extremely interested"
+                                }
+                              },
+                              "questionText": "How interested are you in using Sprig?",
+                              "routingOptions": null,
+                              "type": "LIKERT"
+                            },
+                            {
+                              "id": 105,
+                              "options": [],
+                              "optionsProperties": null,
+                              "questionText": "What aspect of Sprig is most appealing?",
+                              "routingOptions": null,
+                              "type": "OPEN"
+                            }
+                          ],
+                          "status": "COMPLETED",
+                          "totalResponseLimit": null,
+                          "type": "CONTINUOUS",
+                          "updatedAt": "2019-06-12T19:23:35.522Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Retrieve Surveys",
+        "tags": [
+          "V1"
+        ]
+      }
+    },
+    "/v1/themes": {
+      "get": {
+        "description": "Use this endpoint to retrieve themes, along with the responses that are associated with each theme, from your studies.\n",
+        "operationId": "get-v1-themes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/end"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/sid"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization-Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example theme": {
+                    "value": {
+                      "cursor": "string",
+                      "data": [
+                        {
+                          "createdAt": "string",
+                          "id": 0,
+                          "questionId": 0,
+                          "questionText": "string",
+                          "questionType": "string",
+                          "response": "string",
+                          "responseGroupUid": "string",
+                          "surveyId": 0,
+                          "theme": "string",
+                          "themeDescription": "string",
+                          "updatedAt": "string",
+                          "visitorId": 0
+                        }
+                      ]
+                    }
+                  }
+                },
+                "schema": {
+                  "description": "",
+                  "properties": {
+                    "cursor": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "createdAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "questionId": {
+                            "type": "number"
+                          },
+                          "questionText": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "questionType": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "response": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "responseGroupUid": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "surveyId": {
+                            "type": "number"
+                          },
+                          "theme": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "themeDescription": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "visitorId": {
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "minItems": 1,
+                      "type": "array",
+                      "uniqueItems": true
+                    }
+                  },
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "cursor": "Y3JlYXRlZEF0OjE1ODA5MzAyNzg2OTY=",
+                      "data": [
+                        {
+                          "createdAt": "2020-02-21T23:33:23.248Z",
+                          "id": 12345,
+                          "questionId": 369,
+                          "questionText": "What would make Sprig more valuable for you?",
+                          "questionType": "OPEN",
+                          "response": "A more robust data export api",
+                          "responseGroupUid": "8f41fd42-a034-49b6-8a7f-8a231fd6b49a",
+                          "surveyId": 227,
+                          "theme": "Easy data export",
+                          "themeDescription": "A theme focused on easy data export",
+                          "updatedAt": "2020-02-21T23:33:23.248Z",
+                          "visitorId": 19720642
+                        },
+                        {
+                          "createdAt": "2020-10-28T21:37:31.028Z",
+                          "id": 678910,
+                          "questionId": 226,
+                          "questionText": "What would make Sprig more valuable for you?",
+                          "questionType": "OPEN",
+                          "response": "Something something cheeseburgers",
+                          "responseGroupUid": "18e38583-d6b6-4629-b2ce-c51072308f98",
+                          "surveyId": 154,
+                          "theme": "I wish they had food",
+                          "themeDescription": "A theme focused on food offerings",
+                          "updatedAt": "2020-10-28T21:37:31.028Z",
+                          "visitorId": 33094801
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Retrieve Themes",
+        "tags": [
+          "V1"
+        ]
+      }
+    },
+    "/v2/purge/visitors": {
+      "post": {
+        "description": "The Purge Visitors API helps teams comply with end-user bulk data deletion requests mandated by laws like GDPR and CCPA. This endpoint will delete users and all related user data identified by a set of emails, visitor IDs, or user IDs.\n\nPurge requests default to being processed 10 days after submission, however this delay can be configured via the delaySeconds parameter. The endpoint is limited to 100 visitor deletions per request.\n\nOne of email, userId, or visitorId parameter is required to identify the user for data deletion.",
+        "operationId": "post-v2-purge-visitors",
+        "parameters": [
+          {
+            "description": "Bearer YOUR_API_KEY",
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "delaySeconds": 86400,
+                    "emails": [
+                      "freddy@sprig.com",
+                      "gustavo@sprig.com"
+                    ],
+                    "userIds": [
+                      "123456789"
+                    ],
+                    "visitorIds": [
+                      "8cd04391-fc36-4e9d-a9ac-bc77cd507ee0"
+                    ]
+                  }
+                }
+              },
+              "schema": {
+                "properties": {
+                  "delaySeconds": {
+                    "description": "Seconds to wait before starting visitor data purging. This can be used as a safety measure in case the request needs to be canceled.",
+                    "type": "integer"
+                  },
+                  "emails": {
+                    "description": "List of emails for which visitor data will be purged.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "userIds": {
+                    "description": "List of user IDs (external user IDs) for which visitor data will be purged.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "visitorIds": {
+                    "description": "List of visitor IDs for which visitor data will be purged.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "At least one of “emails”, “visitorIds” or “userIds” needs to be non-empty in the request body. Only visitors that exist in the environment for which the API key is in the authorization header can be purged."
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Successful Response": {
+                    "value": {
+                      "requestId": "“b9570865-0840-497d-9016-8b66575c9683”"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "requestId": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Purge Visitors",
+        "tags": [
+          "V2"
+        ]
+      }
+    },
+    "/v2/users": {
+      "parameters": [],
+      "post": {
+        "description": "Endpoint facilitating the programatic upsertion of a user.\nUsers must be upserted 1 at a time.\nEvents created for this user are for historical tracking purposes. Any event tied to a user through this endpoint will not trigger a study through Sprig's SDK.\nAttributes and attribute values can be created and tied to a user through this endpoint.",
+        "operationId": "post-user-v2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization-API-Key"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "example user": {
+                  "value": {
+                    "attributes": {
+                      "customer": "true"
+                    },
+                    "email": "user@test.com",
+                    "events": [
+                      {
+                        "event": "login",
+                        "timestamp": 1626448859836
+                      }
+                    ],
+                    "userId": "12347"
+                  }
+                }
+              },
+              "schema": {
+                "properties": {
+                  "attributes": {
+                    "description": "Key value pairs of attributes",
+                    "properties": {
+                      "attributeName": {
+                        "description": "Attribute name and value. Attributes limited to total of 100 values",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "emailAddress": {
+                    "description": "Valid Email to track visitor by",
+                    "type": "string"
+                  },
+                  "events": {
+                    "items": {
+                      "properties": {
+                        "event": {
+                          "description": "Name of event already being tracked in Sprig",
+                          "type": "string"
+                        },
+                        "timestamp": {
+                          "description": "Unix timestamp in milliseconds",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "userId": {
+                    "description": "Existing or desired id for visitor",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userId"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "Post the necessary fields for the API to upsert a new user."
+        },
+        "responses": {
+          "202": {
+            "$ref": "#/components/responses/202"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Upsert a User",
+        "tags": [
+          "V2"
+        ]
+      }
+    },
+    "/v2/users/{userId}": {
+      "get": {
+        "description": "Endpoint that allows the retrieval of a visitor based on a known User ID.\nThis endpoint can only recover visitors with user IDs, so please ensure your Sprig implementation has user tracking configured correctly based on your SDK installation: /docs/Installation/introduction-web/index\nThis endpoint will retrieve visitor info, a list of attributes tied to the visitor, and a list of events with relevant filter criteria.",
+        "operationId": "get-v2-users-:userId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization-API-Key"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {},
+                "schema": {
+                  "$ref": "#/components/schemas/Userv2"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "summary": "Retrieve a User",
+        "tags": [
+          "V2"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Id of an existing user.",
+          "in": "path",
+          "name": "userId",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.sprig.com"
+    }
+  ],
+  "tags": [
+    {
+      "description": "Operations allowing export of survey data",
+      "name": "V1"
+    },
+    {
+      "description": "Operations allowing export of survey data",
+      "name": "V1"
+    },
+    {
+      "description": "All operations pertaining to the user object",
+      "name": "users"
+    },
+    {
+      "description": "All operations pertaining to the user events",
+      "name": "events"
+    },
+    {
+      "description": "Operations allowing export of survey data",
+      "name": "V1"
+    }
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": true,
+    "samples-enabled": true
+  }
+}

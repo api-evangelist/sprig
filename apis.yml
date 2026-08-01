@@ -1,8 +1,27 @@
 aid: sprig
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sprig.png
 name: Sprig
-description: Sprig is a company surfaced as a portfolio company of a16z, accel, battery-ventures and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Sprig is a continuous product-research platform that helps teams automatically
+  capture user insights to improve their product, user experience, and marketing.
+  Sprig delivers in-product studies and surveys to specific users at specific
+  moments across web and mobile, then uses AI to synthesize responses into themes.
+  For developers, Sprig ships a REST API (api.sprig.com) to export studies,
+  responses, and themes and to manage users, web/mobile SDKs (JavaScript, iOS,
+  Android, React Native, Flutter), a webhook event surface, and an official hosted
+  MCP server for AI clients. Formerly UserLeap.
 url: https://raw.githubusercontent.com/api-evangelist/sprig/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,19 +29,118 @@ x-backed-by:
 - a16z
 - accel
 - battery-ventures
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Product Research
+- Surveys
+- User Insights
+- Customer Experience
+- Analytics
+- Product Analytics
+- AI
+- SaaS
+apis:
+- aid: sprig:sprig-v1-api
+  name: Sprig V1 API
+  description: Operations allowing export of survey data
+  humanURL: https://docs.sprig.com/reference/sprig-api/overview
+  baseURL: https://api.sprig.com
+  tags:
+  - V1
+  properties:
+  - type: OpenAPI
+    url: openapi/sprig-v1-api-openapi.yml
+  - type: Authentication
+    url: authentication/sprig-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sprig-problem-types.yml
+  - type: DataModel
+    url: data-model/sprig-data-model.yml
+- aid: sprig:sprig-v2-api
+  name: Sprig V2 API
+  description: The V2 API from Sprig — 3 operation(s) for v2.
+  humanURL: https://docs.sprig.com/reference/sprig-api/overview
+  baseURL: https://api.sprig.com
+  tags:
+  - V2
+  properties:
+  - type: OpenAPI
+    url: openapi/sprig-v2-api-openapi.yml
+  - type: Authentication
+    url: authentication/sprig-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sprig-problem-types.yml
+  - type: DataModel
+    url: data-model/sprig-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://docs.sprig.com/
+- type: Documentation
+  url: https://docs.sprig.com/
+- type: APIReference
+  url: https://docs.sprig.com/reference/sprig-api/overview
+- type: GettingStarted
+  url: https://docs.sprig.com/docs/installation/introduction-web/web-javascript
+- type: ChangeLog
+  url: changelog/sprig-changelog.yml
+- type: StatusPage
+  url: https://status.sprig.com/
+- type: Blog
+  url: https://sprig.com/blog
+- type: Pricing
+  url: https://sprig.com/pricing
+- type: SignUp
+  url: https://app.sprig.com/login
+- type: TermsOfService
+  url: https://sprig.com/ssa
+- type: PrivacyPolicy
+  url: https://sprig.com/privacy-policy
+- type: Support
+  url: mailto:support@sprig.com
+- type: GitHubOrganization
+  url: https://github.com/UserLeap
+- type: Packages
+  url: packages/sprig-packages.yml
+- type: SDKs
+  url: packages/sprig-packages.yml
+- type: MCPServer
+  url: mcp/sprig-mcp.yml
+- type: WellKnown
+  url: well-known/sprig-well-known.yml
+- type: LLMsTxt
+  url: llms/sprig-llms.txt
+- type: Conformance
+  url: conformance/sprig-conformance.yml
+- type: Lifecycle
+  url: lifecycle/sprig-lifecycle.yml
+- type: Conventions
+  url: conventions/sprig-conventions.yml
+- type: OAuthScopes
+  url: scopes/sprig-scopes.yml
+- type: Webhooks
+  url: asyncapi/sprig-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/sprig-agentic-access.yml
+- type: DomainSecurity
+  url: security/sprig-domain-security.yml
+- type: Authentication
+  url: authentication/sprig-authentication.yml
 - type: Website
-  url: http://userleap.com/
+  url: https://sprig.com/
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1

@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sprig-api-openapi-original.json
+format: http-status
+notes: >-
+  Derived from the OpenAPI response codes. Sprig's error responses are declared
+  by HTTP status only (no application/problem+json body schema is published in
+  the spec), so this is an HTTP-status registry rather than an RFC 9457 catalog.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: The request was malformed or a parameter was invalid.
+    operations: [get-v1-responses, get-v1-surveys, get-v1-themes, post-v2-purge-visitors]
+  - status: 403
+    title: Forbidden
+    meaning: Missing or invalid API key, or the key lacks access to the resource.
+    operations: [get-v1-responses, get-v1-surveys, get-v1-themes, post-v2-purge-visitors]
+  - status: 404
+    title: Not Found
+    meaning: The requested study, response, theme, user, or visitor was not found.
+    operations: [get-v1-responses, get-v1-themes, post-v2-purge-visitors, get-v2-users-:userId]
+  - status: 422
+    title: Unprocessable Entity
+    meaning: The upsert-user payload failed validation.
+    operations: [post-user-v2]
+  - status: 429
+    title: Too Many Requests
+    meaning: Rate limit exceeded (Enterprise default 1,000 QPS).
+    operations: [get-v1-responses, get-v1-surveys, get-v1-themes, post-v2-purge-visitors]
+  - status: 500
+    title: Internal Server Error
+    meaning: An unexpected error occurred on the Sprig side.
+    operations: [get-v1-responses, get-v1-surveys, get-v1-themes, post-v2-purge-visitors, post-user-v2, get-v2-users-:userId]
