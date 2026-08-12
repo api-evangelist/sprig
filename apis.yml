@@ -83,6 +83,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/sprig-api-overlay.yaml
 - type: DeveloperPortal
   url: https://docs.sprig.com/
 - type: Documentation
