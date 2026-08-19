@@ -14,28 +14,34 @@ server:
     token_endpoint: https://api.sprig.com/oauth/token
     registration_endpoint: https://api.sprig.com/oauth/register
     scopes:
-      - environments:read
-      - surveys:read
-      - surveys:write
-      - responses:read
-      - themes:read
+    - environments:read
+    - surveys:read
+    - surveys:write
+    - responses:read
+    - themes:read
     metadata:
-      - well-known/sprig-oauth-authorization-server.json
-      - well-known/sprig-oauth-protected-resource.json
+    - well-known/sprig-oauth-authorization-server.json
+    - well-known/sprig-oauth-protected-resource.json
 clients:
   claude: Admin adds a Custom Connector (Customize > Connectors) with the MCP URL, then completes OAuth.
   cursor: mcp-remote command pointing at https://mcp.sprig.com/mcp
   github_copilot: .vscode/mcp.json http server entry
 tools:
-  - name: surveys
-    description: Export Sprig study/survey configurations (up to 1000 at a time).
-    source_operation: openapi/sprig-api-openapi-original.json#get-v1-surveys
-  - name: responses
-    description: Retrieve responses from studies (up to 1000 at a time).
-    source_operation: openapi/sprig-api-openapi-original.json#get-v1-responses
-  - name: themes
-    description: Retrieve themes and their associated responses from studies.
-    source_operation: openapi/sprig-api-openapi-original.json#get-v1-themes
-notes: >-
-  Sprig ships an official hosted, remote MCP server. It also supports creating
-  surveys directly from AI clients (Claude, ChatGPT) per the 2026-06-23 changelog.
+- name: surveys
+  description: Export Sprig study/survey configurations (up to 1000 at a time).
+  source_operation: openapi/sprig-api-openapi-original.json#get-v1-surveys
+- name: responses
+  description: Retrieve responses from studies (up to 1000 at a time).
+  source_operation: openapi/sprig-api-openapi-original.json#get-v1-responses
+- name: themes
+  description: Retrieve themes and their associated responses from studies.
+  source_operation: openapi/sprig-api-openapi-original.json#get-v1-themes
+notes: Sprig ships an official hosted, remote MCP server. It also supports creating surveys directly from
+  AI clients (Claude, ChatGPT) per the 2026-06-23 changelog.
+deployment:
+  mode: remote
+  endpoint: https://mcp.sprig.com/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census

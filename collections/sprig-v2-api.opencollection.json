@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sprig V1 V2 API",
+    "version": "2.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Purge Visitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sprig.com/v2/purge/visitors",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Purge Visitors API helps teams comply with end-user bulk data deletion requests mandated by laws like GDPR and CCPA. This endpoint will delete users and all related user data identified by a set of emails, visitor IDs, or user IDs.\n\nPurge requests default to being processed 10 days after submission, however this delay can be configured via the delaySeconds parameter. The endpoint is limited to 100 visitor deletions per request.\n\nOne of email, userId, or visitorId parameter is required to ide"
+        },
+        {
+          "info": {
+            "name": "Upsert a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sprig.com/v2/users",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint facilitating the programatic upsertion of a user.\nUsers must be upserted 1 at a time.\nEvents created for this user are for historical tracking purposes. Any event tied to a user through this endpoint will not trigger a study through Sprig's SDK.\nAttributes and attribute values can be created and tied to a user through this endpoint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sprig.com/v2/users/:userId",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Id of an existing user."
+              }
+            ]
+          },
+          "docs": "Endpoint that allows the retrieval of a visitor based on a known User ID.\nThis endpoint can only recover visitors with user IDs, so please ensure your Sprig implementation has user tracking configured correctly based on your SDK installation: /docs/Installation/introduction-web/index\nThis endpoint will retrieve visitor info, a list of attributes tied to the visitor, and a list of events with relevant filter criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

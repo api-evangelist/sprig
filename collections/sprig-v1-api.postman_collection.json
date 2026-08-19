@@ -1,0 +1,1406 @@
+{
+  "item": [
+    {
+      "id": "673a4886-957b-413e-999f-f0ca09ad5eb0",
+      "name": "V1",
+      "description": {
+        "content": "Operations allowing export of survey data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7bb138ec-8c75-43eb-bf28-478b9f0ae027",
+          "name": "Retrieve Responses",
+          "request": {
+            "name": "Retrieve Responses",
+            "description": {
+              "content": "Use this endpoint to retrieve responses from your studies. This endpoint allows you to retrieve up to 1000 responses at a time.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A Base64 encoded string representing an opaque cursor position"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Specific number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sid",
+                  "value": "<integer>",
+                  "description": "An integer id for a specific Survey"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_snapshots",
+                  "value": "<boolean>",
+                  "description": "true/false(default). If true, the API will return visitorSnapshots, which contains all events, attributes, triggeringEvent, and eventProperties set for the visitor at the time of survey delivery."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_urls",
+                  "value": "<boolean>",
+                  "description": "true/false (default). If true, the API will return the page URL from which the survey was taken."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_meta",
+                  "value": "<boolean>",
+                  "description": "true/false (default). If true, the API will return the metadata JSON blob containing details available from the client."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_custom_metadata",
+                  "value": "<boolean>",
+                  "description": "true/false (default). If true, the API will return any custom metadata associated with the response (applicable to link platform surveys only)."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_deleted_responses",
+                  "value": "<boolean>",
+                  "description": "true/false (default). If true, the API will return the responses that have been previously deleted."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab2e10b6-d659-4d42-9d14-d0f9724871f1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": \"cursor\",\n  \"data\": [\n    {\n      \"createdAt\": \"2023-10-19T17:04:26.253Z\",\n      \"externalUserId\": null,\n      \"questionId\": 2,\n      \"questionText\": \"Consent / Legal Question\",\n      \"questionType\": \"CONSENTLEGAL\",\n      \"response\": {\n        \"submitted\": true\n      },\n      \"responseGroupUid\": \"9fa86a17-82b1-423a-979a-30ee35ada562\",\n      \"surveyId\": 1,\n      \"updatedAt\": \"2023-10-19T17:04:26.253Z\",\n      \"visitorId\": 0,\n      \"visitorUuid\": \"3b7b4806-c082-4f0c-a8f0-b869121f47cb\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e883723b-ae3e-4e8f-87c1-15ab8b4824c3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b802afe3-16fe-4a7a-9fd8-0cfc38dd3f34",
+              "name": "You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc3d623a-c52c-4d85-8762-c240c63e67d2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c6ab23d-01e3-4f24-820c-7fbb49e6b393",
+              "name": "Your application has made too many requests in too short a time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1367af7d-8df7-4882-993c-7dff39827826",
+              "name": "Something went wrong on Sprig's side. These are very rare :)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with_snapshots",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_urls",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_meta",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_custom_metadata",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_deleted_responses",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80cb9153-76d6-4d58-a1a9-ea1a1d5dcc9f",
+          "name": "Retrieve Surveys",
+          "request": {
+            "name": "Retrieve Surveys",
+            "description": {
+              "content": "Studies were formerly surveys. This endpoint allows for the export of study configurations. The name will eventually change to Study, but at this time survey will be accepted anywhere study appears in the API. This endpoint allows you retrieve up to 1000 surveys at a time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "surveys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A Base64 encoded string representing an opaque cursor position"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Specific number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2900233b-b7fc-4299-adb3-72151a55c6b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": \"Y3JlYXRlZEF0OjE1NTMyMDAxNTMwMTk=\",\n  \"data\": [\n    {\n      \"completedAt\": \"2019-06-12T19:23:35.522Z\",\n      \"constraints\": [\n        {\n          \"comparisonType\": \"gte\",\n          \"event\": null,\n          \"type\": \"SESSION_COUNT\",\n          \"value\": 1\n        },\n        {\n          \"comparisonType\": \"eq\",\n          \"event\": null,\n          \"type\": \"TIME_ON_PAGE_DELAY\",\n          \"value\": 2\n        }\n      ],\n      \"createdAt\": \"2018-07-18T08:02:09.858Z\",\n      \"id\": 12,\n      \"launchedAt\": null,\n      \"name\": \"Understand Appeal\",\n      \"platform\": \"web\",\n      \"questions\": [\n        {\n          \"id\": 118,\n          \"options\": [],\n          \"optionsProperties\": {\n            \"introText\": \"Thanks for using Sprig. Tell us about your experience.\",\n            \"labels\": {\n              \"left\": \"Not at all interested\",\n              \"right\": \"Extremely interested\"\n            }\n          },\n          \"questionText\": \"How interested are you in using Sprig?\",\n          \"routingOptions\": null,\n          \"type\": \"LIKERT\"\n        },\n        {\n          \"id\": 105,\n          \"options\": [],\n          \"optionsProperties\": null,\n          \"questionText\": \"What aspect of Sprig is most appealing?\",\n          \"routingOptions\": null,\n          \"type\": \"OPEN\"\n        }\n      ],\n      \"status\": \"COMPLETED\",\n      \"totalResponseLimit\": null,\n      \"type\": \"CONTINUOUS\",\n      \"updatedAt\": \"2019-06-12T19:23:35.522Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81ecec87-2bb6-4750-a66c-c2b4af790409",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3fa3c0a-9854-4392-b1f8-7288a3ed2ad0",
+              "name": "You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3245062-ef3b-4e7f-9bbf-3c1b5fffe7e1",
+              "name": "Your application has made too many requests in too short a time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ee220cb-a593-476e-95d2-10e9d6a43120",
+              "name": "Something went wrong on Sprig's side. These are very rare :)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "surveys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45eaa550-8787-4003-aa34-dd920e1eccb6",
+          "name": "Retrieve Themes",
+          "request": {
+            "name": "Retrieve Themes",
+            "description": {
+              "content": "Use this endpoint to retrieve themes, along with the responses that are associated with each theme, from your studies.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "themes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A Base64 encoded string representing an opaque cursor position"
+                },
+                {
+                  "disabled": false,
+                  "key": "sid",
+                  "value": "<integer>",
+                  "description": "An integer id for a specific Survey"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "283251b4-6370-40f8-a853-f22cc204b383",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cursor\": \"string\",\n  \"data\": [\n    {\n      \"createdAt\": \"string\",\n      \"id\": 0,\n      \"questionId\": 0,\n      \"questionText\": \"string\",\n      \"questionType\": \"string\",\n      \"response\": \"string\",\n      \"responseGroupUid\": \"string\",\n      \"surveyId\": 0,\n      \"theme\": \"string\",\n      \"themeDescription\": \"string\",\n      \"updatedAt\": \"string\",\n      \"visitorId\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39c497aa-213d-48b2-a989-5b47248ad776",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a15fd53-398a-4e88-9973-947515252ed1",
+              "name": "You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2db4ad0b-0b40-4748-a141-792d50947d1a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ff0e789-e7fd-499b-8535-8ad4f47f5436",
+              "name": "Your application has made too many requests in too short a time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f4a5f14-c5c8-49a5-8d5c-20d1c08d69e3",
+              "name": "Something went wrong on Sprig's side. These are very rare :)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sid",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer YOUR_API_KEY",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sprig.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "50e9298d-0da4-41af-b248-5bd0acd6d64f",
+    "name": "Sprig V1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.\n\nWhile traditional studies are slow, difficult to target, and lack context, Sprig studies are delivered automatically to specific users at specific moments throughout the customer journey — all within the product experience.\n\nThis API provides tools to manage users and studies. User management is used if you are segmenting your samples between visitors that will be tracked with an ID and unregistered visitors. Study export tools will allow you to take results data and send it to another data store or format results for presentation in other applications\n\nContact Support:\n Name: Support\n Email: support@sprig.com",
+      "type": "text/plain"
+    }
+  }
+}

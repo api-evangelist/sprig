@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sprig V1 API",
+    "version": "2.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sprig.com/v1/responses",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A Base64 encoded string representing an opaque cursor position"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specific number of results to return"
+              },
+              {
+                "name": "sid",
+                "value": "",
+                "type": "query",
+                "description": "An integer id for a specific Survey"
+              },
+              {
+                "name": "with_snapshots",
+                "value": "",
+                "type": "query",
+                "description": "true/false(default). If true, the API will return visitorSnapshots, which contains all events, attributes, triggeringEvent, and eventProperties set for the visitor at the time of survey delivery."
+              },
+              {
+                "name": "with_urls",
+                "value": "",
+                "type": "query",
+                "description": "true/false (default). If true, the API will return the page URL from which the survey was taken."
+              },
+              {
+                "name": "with_meta",
+                "value": "",
+                "type": "query",
+                "description": "true/false (default). If true, the API will return the metadata JSON blob containing details available from the client."
+              },
+              {
+                "name": "with_custom_metadata",
+                "value": "",
+                "type": "query",
+                "description": "true/false (default). If true, the API will return any custom metadata associated with the response (applicable to link platform surveys only)."
+              },
+              {
+                "name": "with_deleted_responses",
+                "value": "",
+                "type": "query",
+                "description": "true/false (default). If true, the API will return the responses that have been previously deleted."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to retrieve responses from your studies. This endpoint allows you to retrieve up to 1000 responses at a time.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve Surveys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sprig.com/v1/surveys",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A Base64 encoded string representing an opaque cursor position"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Specific number of results to return"
+              }
+            ]
+          },
+          "docs": "Studies were formerly surveys. This endpoint allows for the export of study configurations. The name will eventually change to Study, but at this time survey will be accepted anywhere study appears in the API. This endpoint allows you retrieve up to 1000 surveys at a time."
+        },
+        {
+          "info": {
+            "name": "Retrieve Themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sprig.com/v1/themes",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation data for a generated theme to return, represented as milliseconds from epoch time"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation date for a generated theme to return, represented as milleseconds from epoch time"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A Base64 encoded string representing an opaque cursor position"
+              },
+              {
+                "name": "sid",
+                "value": "",
+                "type": "query",
+                "description": "An integer id for a specific Survey"
+              }
+            ]
+          },
+          "docs": "Use this endpoint to retrieve themes, along with the responses that are associated with each theme, from your studies.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
