@@ -42,6 +42,16 @@ tags:
 - Customer Experience
 - Analytics
 - Product Analytics
+- Artificial Intelligence
+- Software-as-a-Service
+tags_raw:
+- Company
+- Product Research
+- Surveys
+- User Insights
+- Customer Experience
+- Analytics
+- Product Analytics
 - AI
 - SaaS
 apis:
@@ -51,6 +61,8 @@ apis:
   humanURL: https://docs.sprig.com/reference/sprig-api/overview
   baseURL: https://api.sprig.com
   tags:
+  - v1
+  tags_raw:
   - V1
   properties:
   - type: OpenAPI
