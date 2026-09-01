@@ -91,6 +91,8 @@ apis:
   humanURL: https://docs.sprig.com/reference/sprig-api/overview
   baseURL: https://api.sprig.com
   tags:
+  - v2
+  tags_raw:
   - V2
   properties:
   - type: OpenAPI
