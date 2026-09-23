@@ -1,21 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: support@sprig.com
     name: Support
-  description: 'Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.
-
-
-    While traditional studies are slow, difficult to target, and lack context, Sprig studies are delivered automatically to specific users at specific moments throughout the customer journey — all within the product experience.
-
-
-    This API provides tools to manage users and studies. User management is used if you are segmenting your samples between visitors that will be tracked with an ID and unregistered visitors. Study export tools will allow you to take results data and send it to another data store or format results for presentation in other applications'
-  title: Sprig V1 V2 API
+  description: Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.
+  title: Sprig V2 API
   version: 2.2.1
 servers:
 - url: https://api.sprig.com
 tags:
-- name: V2
+- name: v2
 paths:
   /v2/purge/visitors:
     post:
@@ -96,7 +90,7 @@ paths:
           $ref: '#/components/responses/500'
       summary: Purge Visitors
       tags:
-      - V2
+      - v2
   /v2/users:
     parameters: []
     post:
@@ -164,7 +158,7 @@ paths:
           $ref: '#/components/responses/500'
       summary: Upsert a User
       tags:
-      - V2
+      - v2
   /v2/users/{userId}:
     parameters:
     - description: Id of an existing user.
@@ -196,29 +190,8 @@ paths:
           $ref: '#/components/responses/500'
       summary: Retrieve a User
       tags:
-      - V2
+      - v2
 components:
-  responses:
-    '500':
-      description: Something went wrong on Sprig's side. These are very rare :)
-    '422':
-      description: Unprocessable Entity
-    '429':
-      description: Your application has made too many requests in too short a time.
-    '202':
-      description: Accepted
-    '404':
-      description: Not Found
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
-    '400':
-      content:
-        application/json:
-          schema:
-            properties:
-              error:
-                type: string
-      description: Bad Request
   schemas:
     Userv2:
       description: API V2 user model
@@ -264,6 +237,27 @@ components:
             event: Clicked Signup
             updatedAt: 1612739912314
           id: a926111b-fa62-49f7-8666-2c94ca8b18fc
+  responses:
+    '202':
+      description: Accepted
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
+    '429':
+      description: Your application has made too many requests in too short a time.
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
+    '422':
+      description: Unprocessable Entity
+    '400':
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                type: string
+      description: Bad Request
+    '404':
+      description: Not Found
   parameters:
     Authorization-API-Key:
       description: API-Key YOUR_API_KEY

@@ -1,25 +1,42 @@
-generated: '2026-07-21'
+generated: '2026-09-19'
 method: searched
 hosts:
+- host: https://api.sprig.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: sprig-api-oauth-authorization-server.json
+    bytes: 835
+  path_echo_control: passed
+- host: https://sprig.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://mcp.sprig.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: sprig-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: sprig-oauth-protected-resource.json
+notes: Sprig publishes OAuth 2.0 discovery metadata on its MCP host (mcp.sprig.com), pointing at api.sprig.com
+  as the authorization server. No security.txt or OpenID configuration was found on the API or marketing
+  hosts.
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
   - host: https://api.sprig.com
-    documents:
-      - path: /.well-known/security.txt
-        status: 404
-      - path: /.well-known/openid-configuration
-        status: 404
-  - host: https://sprig.com
-    documents:
-      - path: /.well-known/security.txt
-        status: 404
-  - host: https://mcp.sprig.com
-    documents:
-      - path: /.well-known/oauth-authorization-server   # RFC 8414
-        status: 200
-        file: sprig-oauth-authorization-server.json
-      - path: /.well-known/oauth-protected-resource     # RFC 9728
-        status: 200
-        file: sprig-oauth-protected-resource.json
-notes: >-
-  Sprig publishes OAuth 2.0 discovery metadata on its MCP host (mcp.sprig.com),
-  pointing at api.sprig.com as the authorization server. No security.txt or
-  OpenID configuration was found on the API or marketing hosts.
+    path: /.well-known/oauth-authorization-server
+    file: sprig-api-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
