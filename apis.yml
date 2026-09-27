@@ -69,36 +69,80 @@ tags_raw:
 - AI
 - SaaS
 apis:
-- aid: sprig:sprig-v1-api
-  name: Sprig V1 API
-  description: Operations allowing export of survey data
+- aid: sprig:sprig-purge-api
+  name: Sprig Purge API
+  description: The Purge API from Sprig — 1 operation(s) for purge.
   humanURL: https://docs.sprig.com/reference/sprig-api/overview
   baseURL: https://api.sprig.com
   tags:
-  - v1
-  tags_raw:
-  - V1
+  - Purge
   properties:
   - type: OpenAPI
-    url: openapi/sprig-v1-api-openapi.yml
+    url: openapi/sprig-purge-api-openapi.yml
   - type: Authentication
     url: authentication/sprig-authentication.yml
   - type: ErrorCatalog
     url: errors/sprig-problem-types.yml
   - type: DataModel
     url: data-model/sprig-data-model.yml
-- aid: sprig:sprig-v2-api
-  name: Sprig V2 API
-  description: The V2 API from Sprig — 3 operation(s) for v2.
+- aid: sprig:sprig-responses-api
+  name: Sprig Responses API
+  description: The Responses API from Sprig — 1 operation(s) for responses.
   humanURL: https://docs.sprig.com/reference/sprig-api/overview
   baseURL: https://api.sprig.com
   tags:
-  - v2
-  tags_raw:
-  - V2
+  - Responses
   properties:
   - type: OpenAPI
-    url: openapi/sprig-v2-api-openapi.yml
+    url: openapi/sprig-responses-api-openapi.yml
+  - type: Authentication
+    url: authentication/sprig-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sprig-problem-types.yml
+  - type: DataModel
+    url: data-model/sprig-data-model.yml
+- aid: sprig:sprig-surveys-api
+  name: Sprig Surveys API
+  description: The Surveys API from Sprig — 1 operation(s) for surveys.
+  humanURL: https://docs.sprig.com/reference/sprig-api/overview
+  baseURL: https://api.sprig.com
+  tags:
+  - Surveys
+  properties:
+  - type: OpenAPI
+    url: openapi/sprig-surveys-api-openapi.yml
+  - type: Authentication
+    url: authentication/sprig-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sprig-problem-types.yml
+  - type: DataModel
+    url: data-model/sprig-data-model.yml
+- aid: sprig:sprig-themes-api
+  name: Sprig Themes API
+  description: The Themes API from Sprig — 1 operation(s) for themes.
+  humanURL: https://docs.sprig.com/reference/sprig-api/overview
+  baseURL: https://api.sprig.com
+  tags:
+  - Themes
+  properties:
+  - type: OpenAPI
+    url: openapi/sprig-themes-api-openapi.yml
+  - type: Authentication
+    url: authentication/sprig-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sprig-problem-types.yml
+  - type: DataModel
+    url: data-model/sprig-data-model.yml
+- aid: sprig:sprig-users-api
+  name: Sprig Users API
+  description: The Users API from Sprig — 2 operation(s) for users.
+  humanURL: https://docs.sprig.com/reference/sprig-api/overview
+  baseURL: https://api.sprig.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/sprig-users-api-openapi.yml
   - type: Authentication
     url: authentication/sprig-authentication.yml
   - type: ErrorCatalog

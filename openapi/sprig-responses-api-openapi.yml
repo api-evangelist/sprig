@@ -4,13 +4,12 @@ info:
     email: support@sprig.com
     name: Support
   description: Sprig is a continuous product research tool that helps you automatically capture the user insights you need to consistently improve your product, user experience, marketing, and more.
-  title: Sprig V1 API
+  title: Sprig Responses API
   version: 2.2.1
 servers:
 - url: https://api.sprig.com
 tags:
-- description: Operations allowing export of survey data
-  name: v1
+- name: Responses
 paths:
   /v1/responses:
     get:
@@ -565,372 +564,21 @@ paths:
           $ref: '#/components/responses/500'
       summary: Retrieve Responses
       tags:
-      - v1
-  /v1/surveys:
-    get:
-      description: Studies were formerly surveys. This endpoint allows for the export of study configurations. The name will eventually change to Study, but at this time survey will be accepted anywhere study appears in the API. This endpoint allows you retrieve up to 1000 surveys at a time.
-      operationId: get-v1-surveys
-      parameters:
-      - $ref: '#/components/parameters/start'
-      - $ref: '#/components/parameters/end'
-      - $ref: '#/components/parameters/cursor'
-      - $ref: '#/components/parameters/status'
-      - $ref: '#/components/parameters/limit'
-      - $ref: '#/components/parameters/Authorization-Bearer'
-      responses:
-        '200':
-          content:
-            application/json:
-              examples:
-                example surveys:
-                  value:
-                    cursor: Y3JlYXRlZEF0OjE1NTMyMDAxNTMwMTk=
-                    data:
-                    - completedAt: '2019-06-12T19:23:35.522Z'
-                      constraints:
-                      - comparisonType: gte
-                        event: null
-                        type: SESSION_COUNT
-                        value: 1
-                      - comparisonType: eq
-                        event: null
-                        type: TIME_ON_PAGE_DELAY
-                        value: 2
-                      createdAt: '2018-07-18T08:02:09.858Z'
-                      id: 12
-                      launchedAt: null
-                      name: Understand Appeal
-                      platform: web
-                      questions:
-                      - id: 118
-                        options: []
-                        optionsProperties:
-                          introText: Thanks for using Sprig. Tell us about your experience.
-                          labels:
-                            left: Not at all interested
-                            right: Extremely interested
-                        questionText: How interested are you in using Sprig?
-                        routingOptions: null
-                        type: LIKERT
-                      - id: 105
-                        options: []
-                        optionsProperties: null
-                        questionText: What aspect of Sprig is most appealing?
-                        routingOptions: null
-                        type: OPEN
-                      status: COMPLETED
-                      totalResponseLimit: null
-                      type: CONTINUOUS
-                      updatedAt: '2019-06-12T19:23:35.522Z'
-              schema:
-                description: ''
-                properties:
-                  cursor:
-                    minLength: 1
-                    type: string
-                  data:
-                    items:
-                      properties:
-                        completedAt:
-                          minLength: 1
-                          type: string
-                        constraints:
-                          items:
-                            properties:
-                              comparisonType:
-                                minLength: 1
-                                type: string
-                              event: {}
-                              type:
-                                minLength: 1
-                                type: string
-                              value:
-                                type: number
-                            type: object
-                          minItems: 1
-                          type: array
-                          uniqueItems: true
-                        createdAt:
-                          minLength: 1
-                          type: string
-                        id:
-                          type: number
-                        launchedAt: {}
-                        name:
-                          minLength: 1
-                          type: string
-                        platform:
-                          minLength: 1
-                          type: string
-                        questions:
-                          items:
-                            properties:
-                              id:
-                                type: number
-                              options:
-                                items:
-                                  type: object
-                                type: array
-                              optionsProperties:
-                                nullable: true
-                                properties:
-                                  introText:
-                                    minLength: 1
-                                    type: string
-                                  labels:
-                                    properties:
-                                      left:
-                                        minLength: 1
-                                        type: string
-                                      right:
-                                        minLength: 1
-                                        type: string
-                                    required:
-                                    - left
-                                    - right
-                                    type: object
-                                type: object
-                              questionText:
-                                minLength: 1
-                                type: string
-                              routingOptions: {}
-                              type:
-                                minLength: 1
-                                type: string
-                            type: object
-                          minItems: 1
-                          type: array
-                          uniqueItems: true
-                        status:
-                          minLength: 1
-                          type: string
-                        totalResponseLimit: {}
-                        type:
-                          minLength: 1
-                          type: string
-                        updatedAt:
-                          minLength: 1
-                          type: string
-                      type: object
-                    minItems: 1
-                    type: array
-                    uniqueItems: true
-                type: object
-                x-examples:
-                  example-1:
-                    cursor: Y3JlYXRlZEF0OjE1NTMyMDAxNTMwMTk=
-                    data:
-                    - completedAt: '2019-06-12T19:23:35.522Z'
-                      constraints:
-                      - comparisonType: gte
-                        event: null
-                        type: SESSION_COUNT
-                        value: 1
-                      - comparisonType: eq
-                        event: null
-                        type: TIME_ON_PAGE_DELAY
-                        value: 2
-                      createdAt: '2018-07-18T08:02:09.858Z'
-                      id: 12
-                      launchedAt: null
-                      name: Understand Appeal
-                      platform: web
-                      questions:
-                      - id: 118
-                        options: []
-                        optionsProperties:
-                          introText: Thanks for using Sprig. Tell us about your experience.
-                          labels:
-                            left: Not at all interested
-                            right: Extremely interested
-                        questionText: How interested are you in using Sprig?
-                        routingOptions: null
-                        type: LIKERT
-                      - id: 105
-                        options: []
-                        optionsProperties: null
-                        questionText: What aspect of Sprig is most appealing?
-                        routingOptions: null
-                        type: OPEN
-                      status: COMPLETED
-                      totalResponseLimit: null
-                      type: CONTINUOUS
-                      updatedAt: '2019-06-12T19:23:35.522Z'
-          description: OK
-        '400':
-          $ref: '#/components/responses/400'
-        '403':
-          $ref: '#/components/responses/403'
-        '429':
-          $ref: '#/components/responses/429'
-        '500':
-          $ref: '#/components/responses/500'
-      summary: Retrieve Surveys
-      tags:
-      - v1
-  /v1/themes:
-    get:
-      description: Use this endpoint to retrieve themes, along with the responses that are associated with each theme, from your studies.
-      operationId: get-v1-themes
-      parameters:
-      - $ref: '#/components/parameters/start'
-      - $ref: '#/components/parameters/end'
-      - $ref: '#/components/parameters/cursor'
-      - $ref: '#/components/parameters/sid'
-      - $ref: '#/components/parameters/Authorization-Bearer'
-      responses:
-        '200':
-          content:
-            application/json:
-              examples:
-                example theme:
-                  value:
-                    cursor: string
-                    data:
-                    - createdAt: string
-                      id: 0
-                      questionId: 0
-                      questionText: string
-                      questionType: string
-                      response: string
-                      responseGroupUid: string
-                      surveyId: 0
-                      theme: string
-                      themeDescription: string
-                      updatedAt: string
-                      visitorId: 0
-              schema:
-                description: ''
-                properties:
-                  cursor:
-                    minLength: 1
-                    type: string
-                  data:
-                    items:
-                      properties:
-                        createdAt:
-                          minLength: 1
-                          type: string
-                        id:
-                          type: number
-                        questionId:
-                          type: number
-                        questionText:
-                          minLength: 1
-                          type: string
-                        questionType:
-                          minLength: 1
-                          type: string
-                        response:
-                          minLength: 1
-                          type: string
-                        responseGroupUid:
-                          minLength: 1
-                          type: string
-                        surveyId:
-                          type: number
-                        theme:
-                          minLength: 1
-                          type: string
-                        themeDescription:
-                          minLength: 1
-                          type: string
-                        updatedAt:
-                          minLength: 1
-                          type: string
-                        visitorId:
-                          type: number
-                      type: object
-                    minItems: 1
-                    type: array
-                    uniqueItems: true
-                type: object
-                x-examples:
-                  example-1:
-                    cursor: Y3JlYXRlZEF0OjE1ODA5MzAyNzg2OTY=
-                    data:
-                    - createdAt: '2020-02-21T23:33:23.248Z'
-                      id: 12345
-                      questionId: 369
-                      questionText: What would make Sprig more valuable for you?
-                      questionType: OPEN
-                      response: A more robust data export api
-                      responseGroupUid: 8f41fd42-a034-49b6-8a7f-8a231fd6b49a
-                      surveyId: 227
-                      theme: Easy data export
-                      themeDescription: A theme focused on easy data export
-                      updatedAt: '2020-02-21T23:33:23.248Z'
-                      visitorId: 19720642
-                    - createdAt: '2020-10-28T21:37:31.028Z'
-                      id: 678910
-                      questionId: 226
-                      questionText: What would make Sprig more valuable for you?
-                      questionType: OPEN
-                      response: Something something cheeseburgers
-                      responseGroupUid: 18e38583-d6b6-4629-b2ce-c51072308f98
-                      surveyId: 154
-                      theme: I wish they had food
-                      themeDescription: A theme focused on food offerings
-                      updatedAt: '2020-10-28T21:37:31.028Z'
-                      visitorId: 33094801
-          description: OK
-        '400':
-          $ref: '#/components/responses/400'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '429':
-          $ref: '#/components/responses/429'
-        '500':
-          $ref: '#/components/responses/500'
-      summary: Retrieve Themes
-      tags:
-      - v1
+      - Responses
 components:
   parameters:
-    end:
-      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
-      in: query
-      name: end
-      required: false
-      schema:
-        type: integer
-    Authorization-Bearer:
-      description: Bearer YOUR_API_KEY
-      in: header
-      name: Authorization
-      required: true
-      schema:
-        type: string
-    status:
-      description: One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED
-      in: query
-      name: status
-      required: false
-      schema:
-        items:
-          enum:
-          - IN_PROGRESS
-          - PAUSED
-          - COMPLETED
-          - DRAFT
-          - ARCHIVED
-          - NEW
-          type: string
-        type: array
-    start:
-      description: The earliest creation data for a generated theme to return, represented as milliseconds from epoch time
-      in: query
-      name: start
-      required: false
-      schema:
-        type: integer
     cursor:
       description: A Base64 encoded string representing an opaque cursor position
       in: query
       name: cursor
       required: false
+      schema:
+        type: string
+    Authorization-Bearer:
+      description: Bearer YOUR_API_KEY
+      in: header
+      name: Authorization
+      required: true
       schema:
         type: string
     limit:
@@ -942,6 +590,13 @@ components:
         maximum: 1000
         minimum: 1
         type: integer
+    start:
+      description: The earliest creation data for a generated theme to return, represented as milliseconds from epoch time
+      in: query
+      name: start
+      required: false
+      schema:
+        type: integer
     sid:
       description: An integer id for a specific Survey
       in: query
@@ -949,13 +604,18 @@ components:
       required: false
       schema:
         type: integer
+    end:
+      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
+      in: query
+      name: end
+      required: false
+      schema:
+        type: integer
   responses:
     '403':
       description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
-    '429':
-      description: Your application has made too many requests in too short a time.
-    '500':
-      description: Something went wrong on Sprig's side. These are very rare :)
+    '404':
+      description: Not Found
     '400':
       content:
         application/json:
@@ -964,8 +624,10 @@ components:
               error:
                 type: string
       description: Bad Request
-    '404':
-      description: Not Found
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
+    '429':
+      description: Your application has made too many requests in too short a time.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

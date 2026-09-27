@@ -4,17 +4,33 @@
     "_original/sprig-api-openapi-original.json"
   ],
   "outputs": [
-    "sprig-v1-api-openapi.yml",
-    "sprig-v2-api-openapi.yml"
+    "sprig-purge-api-openapi.yml",
+    "sprig-responses-api-openapi.yml",
+    "sprig-surveys-api-openapi.yml",
+    "sprig-themes-api-openapi.yml",
+    "sprig-users-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "sprig-api-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "sprig-api-openapi-original.json: declared missing tag: V2",
-    "apis.yml register: already-registered"
+    "sprig-api-openapi-original.json: tagged paths GET /v1/responses -> Responses",
+    "sprig-api-openapi-original.json: tagged paths GET /v1/surveys -> Surveys",
+    "sprig-api-openapi-original.json: tagged paths GET /v1/themes -> Themes",
+    "sprig-api-openapi-original.json: tagged paths POST /v2/purge/visitors -> Purge",
+    "sprig-api-openapi-original.json: tagged paths POST /v2/users -> Users",
+    "sprig-api-openapi-original.json: tagged paths GET /v2/users/{userId} -> Users",
+    "sprig-api-openapi-original.json: declared missing tag: Purge",
+    "sprig-api-openapi-original.json: declared missing tag: Responses",
+    "sprig-api-openapi-original.json: declared missing tag: Surveys",
+    "sprig-api-openapi-original.json: declared missing tag: Themes",
+    "sprig-api-openapi-original.json: declared missing tag: Users",
+    "superseded outputs removed: sprig-v1-api-openapi.yml, sprig-v2-api-openapi.yml",
+    "apis.yml register: written (+5 apis, 5 total)"
   ],
   "skipped": [
     "sprig-v1-api-openapi.yml: previously refined output, superseded by openapi/_original/",
