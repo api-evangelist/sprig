@@ -113,12 +113,6 @@ paths:
       - Users
 components:
   responses:
-    '202':
-      description: Accepted
-    '422':
-      description: Unprocessable Entity
-    '404':
-      description: Not Found
     '400':
       content:
         application/json:
@@ -127,8 +121,14 @@ components:
               error:
                 type: string
       description: Bad Request
+    '202':
+      description: Accepted
     '500':
       description: Something went wrong on Sprig's side. These are very rare :)
+    '404':
+      description: Not Found
+    '422':
+      description: Unprocessable Entity
   parameters:
     Authorization-API-Key:
       description: API-Key YOUR_API_KEY

@@ -10,9 +10,7 @@
     "sprig-themes-api-openapi.yml",
     "sprig-users-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 2 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -29,11 +27,13 @@
     "sprig-api-openapi-original.json: declared missing tag: Surveys",
     "sprig-api-openapi-original.json: declared missing tag: Themes",
     "sprig-api-openapi-original.json: declared missing tag: Users",
-    "superseded outputs removed: sprig-v1-api-openapi.yml, sprig-v2-api-openapi.yml",
-    "apis.yml register: written (+5 apis, 5 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "sprig-v1-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "sprig-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "sprig-purge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sprig-responses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sprig-surveys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sprig-themes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sprig-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
