@@ -139,6 +139,8 @@ apis:
   humanURL: https://docs.sprig.com/reference/sprig-api/overview
   baseURL: https://api.sprig.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -155,6 +157,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/sprig-capability-edges.yml
+  name: Sprig Business Capability Map
 - type: Overlay
   url: overlays/sprig-api-overlay.yaml
 - type: DeveloperPortal
