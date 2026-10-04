@@ -93,6 +93,10 @@ paths:
       - Purge
 components:
   responses:
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
     '400':
       content:
         application/json:
@@ -101,10 +105,6 @@ components:
               error:
                 type: string
       description: Bad Request
-    '500':
-      description: Something went wrong on Sprig's side. These are very rare :)
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '404':
       description: Not Found
     '429':

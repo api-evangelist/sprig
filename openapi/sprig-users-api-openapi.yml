@@ -112,31 +112,6 @@ paths:
       tags:
       - Users
 components:
-  responses:
-    '400':
-      content:
-        application/json:
-          schema:
-            properties:
-              error:
-                type: string
-      description: Bad Request
-    '202':
-      description: Accepted
-    '500':
-      description: Something went wrong on Sprig's side. These are very rare :)
-    '404':
-      description: Not Found
-    '422':
-      description: Unprocessable Entity
-  parameters:
-    Authorization-API-Key:
-      description: API-Key YOUR_API_KEY
-      in: header
-      name: Authorization
-      required: true
-      schema:
-        type: string
   schemas:
     Userv2:
       description: API V2 user model
@@ -182,6 +157,31 @@ components:
             event: Clicked Signup
             updatedAt: 1612739912314
           id: a926111b-fa62-49f7-8666-2c94ca8b18fc
+  responses:
+    '202':
+      description: Accepted
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
+    '400':
+      content:
+        application/json:
+          schema:
+            properties:
+              error:
+                type: string
+      description: Bad Request
+    '404':
+      description: Not Found
+    '422':
+      description: Unprocessable Entity
+  parameters:
+    Authorization-API-Key:
+      description: API-Key YOUR_API_KEY
+      in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

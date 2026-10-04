@@ -215,6 +215,10 @@ paths:
       - Surveys
 components:
   responses:
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
+    '500':
+      description: Something went wrong on Sprig's side. These are very rare :)
     '400':
       content:
         application/json:
@@ -223,20 +227,9 @@ components:
               error:
                 type: string
       description: Bad Request
-    '500':
-      description: Something went wrong on Sprig's side. These are very rare :)
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '429':
       description: Your application has made too many requests in too short a time.
   parameters:
-    Authorization-Bearer:
-      description: Bearer YOUR_API_KEY
-      in: header
-      name: Authorization
-      required: true
-      schema:
-        type: string
     start:
       description: The earliest creation data for a generated theme to return, represented as milliseconds from epoch time
       in: query
@@ -244,15 +237,13 @@ components:
       required: false
       schema:
         type: integer
-    limit:
-      description: Specific number of results to return
+    cursor:
+      description: A Base64 encoded string representing an opaque cursor position
       in: query
-      name: limit
+      name: cursor
       required: false
       schema:
-        maximum: 1000
-        minimum: 1
-        type: integer
+        type: string
     status:
       description: One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED
       in: query
@@ -269,6 +260,15 @@ components:
           - NEW
           type: string
         type: array
+    limit:
+      description: Specific number of results to return
+      in: query
+      name: limit
+      required: false
+      schema:
+        maximum: 1000
+        minimum: 1
+        type: integer
     end:
       description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
       in: query
@@ -276,11 +276,11 @@ components:
       required: false
       schema:
         type: integer
-    cursor:
-      description: A Base64 encoded string representing an opaque cursor position
-      in: query
-      name: cursor
-      required: false
+    Authorization-Bearer:
+      description: Bearer YOUR_API_KEY
+      in: header
+      name: Authorization
+      required: true
       schema:
         type: string
   securitySchemes:
