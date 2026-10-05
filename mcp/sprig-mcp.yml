@@ -45,3 +45,24 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://mcp.sprig.com/mcp
+  metadata_url: https://mcp.sprig.com/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.sprig.com/mcp
+    authorization_servers:
+    - https://api.sprig.com
+    scopes_supported:
+    - environments:read
+    - surveys:read
+    - surveys:write
+    - responses:read
+    - themes:read
+    - reports:read
+    bearer_methods_supported:
+    - header
+    resource_name: Sprig MCP Server
