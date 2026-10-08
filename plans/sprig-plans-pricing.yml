@@ -25,3 +25,16 @@ plans:
   period: none
   included_quota: Design, Field, and Synthesize Agents; adaptive survey architecture; panels, email, in-product
     deployment; governance; enterprise onboarding and support
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Enterprise platform
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
