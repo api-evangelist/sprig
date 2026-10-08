@@ -1,0 +1,27 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://sprig.com/pricing
+sources:
+- https://sprig.com/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: false
+note: No numeric price is published on the pricing page; Pricing page states pricing scales with response
+  volume, activated capabilities, and deployment environments, but shows no numeric prices; only 'Book
+  a demo' CTAs.
+plan_count: 1
+plans:
+- name: Enterprise platform
+  price_text: Book a demo
+  period: none
+  included_quota: Design, Field, and Synthesize Agents; adaptive survey architecture; panels, email, in-product
+    deployment; governance; enterprise onboarding and support
