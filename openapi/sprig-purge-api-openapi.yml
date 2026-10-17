@@ -93,10 +93,10 @@ paths:
       - Purge
 components:
   responses:
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '500':
       description: Something went wrong on Sprig's side. These are very rare :)
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '400':
       content:
         application/json:
@@ -105,10 +105,10 @@ components:
               error:
                 type: string
       description: Bad Request
-    '404':
-      description: Not Found
     '429':
       description: Your application has made too many requests in too short a time.
+    '404':
+      description: Not Found
   securitySchemes:
     apiKeyAuth:
       type: apiKey

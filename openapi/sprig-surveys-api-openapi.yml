@@ -215,10 +215,10 @@ paths:
       - Surveys
 components:
   responses:
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '500':
       description: Something went wrong on Sprig's side. These are very rare :)
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '400':
       content:
         application/json:
@@ -237,13 +237,6 @@ components:
       required: false
       schema:
         type: integer
-    cursor:
-      description: A Base64 encoded string representing an opaque cursor position
-      in: query
-      name: cursor
-      required: false
-      schema:
-        type: string
     status:
       description: One or many of (IN_PROGRESS, PAUSED, COMPLETED, DRAFT, ARCHIVED, NEW). Can be passed as ?status=PAUSED,COMPLETED, ?status[]=PAUSED&status[]=COMPLETED or ?status=PAUSED&status=COMPLETED
       in: query
@@ -260,6 +253,13 @@ components:
           - NEW
           type: string
         type: array
+    end:
+      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
+      in: query
+      name: end
+      required: false
+      schema:
+        type: integer
     limit:
       description: Specific number of results to return
       in: query
@@ -269,18 +269,18 @@ components:
         maximum: 1000
         minimum: 1
         type: integer
-    end:
-      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
-      in: query
-      name: end
-      required: false
-      schema:
-        type: integer
     Authorization-Bearer:
       description: Bearer YOUR_API_KEY
       in: header
       name: Authorization
       required: true
+      schema:
+        type: string
+    cursor:
+      description: A Base64 encoded string representing an opaque cursor position
+      in: query
+      name: cursor
+      required: false
       schema:
         type: string
   securitySchemes:

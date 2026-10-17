@@ -567,12 +567,10 @@ paths:
       - Responses
 components:
   responses:
-    '403':
-      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
-    '404':
-      description: Not Found
     '500':
       description: Something went wrong on Sprig's side. These are very rare :)
+    '403':
+      description: You may have an invalid or missing API key and you should check your authorization header. There is no message with this status code.
     '400':
       content:
         application/json:
@@ -583,7 +581,16 @@ components:
       description: Bad Request
     '429':
       description: Your application has made too many requests in too short a time.
+    '404':
+      description: Not Found
   parameters:
+    sid:
+      description: An integer id for a specific Survey
+      in: query
+      name: sid
+      required: false
+      schema:
+        type: integer
     start:
       description: The earliest creation data for a generated theme to return, represented as milliseconds from epoch time
       in: query
@@ -591,13 +598,13 @@ components:
       required: false
       schema:
         type: integer
-    cursor:
-      description: A Base64 encoded string representing an opaque cursor position
+    end:
+      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
       in: query
-      name: cursor
+      name: end
       required: false
       schema:
-        type: string
+        type: integer
     limit:
       description: Specific number of results to return
       in: query
@@ -607,13 +614,6 @@ components:
         maximum: 1000
         minimum: 1
         type: integer
-    end:
-      description: The latest creation date for a generated theme to return, represented as milleseconds from epoch time
-      in: query
-      name: end
-      required: false
-      schema:
-        type: integer
     Authorization-Bearer:
       description: Bearer YOUR_API_KEY
       in: header
@@ -621,13 +621,13 @@ components:
       required: true
       schema:
         type: string
-    sid:
-      description: An integer id for a specific Survey
+    cursor:
+      description: A Base64 encoded string representing an opaque cursor position
       in: query
-      name: sid
+      name: cursor
       required: false
       schema:
-        type: integer
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
