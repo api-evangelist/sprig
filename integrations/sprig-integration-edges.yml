@@ -1,77 +1,5 @@
 generated: '2026-10-14'
 edges:
-- partner_name: Twilio Segment
-  partner: segment
-  partner_match: aggregator
-  marketplace: segment-partner-destinations
-  channel: partner-built
-  direction: third-party
-  type: marketplace
-  relationship: platform-app
-  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/sprig-cloud
-  coverage_role:
-  - destination
-  cdp_signals:
-    destination:
-      catalog_entries:
-      - sprig-cloud
-      - sprig-web
-      status: PUBLIC
-      partner_owned: true
-      connection_modes:
-      - cloud:mobile
-      - cloud:server
-      - cloud:web
-      accepted_methods:
-      - Alias
-      - Group
-      - Identify
-      - Page
-      - Track
-  detected_by: sweep-cdp.py
-  first_seen: '2026-10-14'
-- partner_name: mParticle
-  partner: mparticle
-  partner_match: aggregator
-  marketplace: coverage
-  channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
-  evidence: https://docs.mparticle.com/integrations/sprig/audience/
-  coverage_role:
-  - destination
-  cdp_signals:
-    destination:
-      catalog_entries:
-      - sprig
-      integration_types:
-      - audience
-      - event
-  detected_by: sweep-cdp.py
-  first_seen: '2026-10-14'
-- partner_name: Hightouch
-  partner: hightouch
-  partner_match: aggregator
-  marketplace: coverage
-  channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
-  evidence: https://hightouch.com/docs/destinations/sprig
-  coverage_role:
-  - destination
-  cdp_signals:
-    destination:
-      catalog_entries:
-      - sprig
-      status: released
-      sync_types:
-      - Users
-      sync_modes:
-      - upsert
-  detected_by: sweep-cdp.py
-  first_seen: '2026-10-14'
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -153,6 +81,107 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
   first_seen: '2026-10-18'
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: third-party
+  type: marketplace
+  relationship: platform-app
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/sprig-cloud
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - sprig-cloud
+      - sprig-web
+      status: PUBLIC
+      partner_owned: true
+      connection_modes:
+      - cloud:mobile
+      - cloud:server
+      - cloud:web
+      accepted_methods:
+      - Alias
+      - Group
+      - Identify
+      - Page
+      - Track
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: mParticle
+  partner: mparticle
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://docs.mparticle.com/integrations/sprig/audience/
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - sprig
+      integration_types:
+      - audience
+      - event
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/sprig
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - sprig
+      status: released
+      sync_types:
+      - Users
+      sync_modes:
+      - upsert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Andreessen Horowitz (a16z)
+  partner: a16z
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://a16z.com/companies/sprig/
+  category: vc portfolio participation
+  contract_reference:
+    register: a16z portfolio (a16z.com/portfolio/, the page's own data-companies JSON)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Sprig
+    register_id: https://a16z.com/companies/sprig/
+    register_country: null
+    register_website: https://sprig.com
+    matched_domain: sprig.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    year: '2021'
+    status: Active
+    sector: Enterprise
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
 method: searched
 checked:
 - https://api.nuget.org/v3
@@ -167,6 +196,12 @@ checked:
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/sprig-cloud
 - https://zapier.com/api/v4/apps/
 - slack/integrations/slack-integration-edges.yml
+- https://a16z.com/portfolio/
+- https://www.battery.com/company/
+- https://www.battery.com/wp-admin/admin-ajax.php
+- https://www.indexventures.com/companies/
+- https://www.sequoiacap.com/our-companies/
+- https://www.sequoiacap.com/sitemap.xml
 source:
 - https://docs.mparticle.com/integrations/sprig/audience/
 - https://hightouch.com/docs/destinations/sprig
