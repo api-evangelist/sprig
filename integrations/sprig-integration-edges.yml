@@ -182,6 +182,32 @@ edges:
     sector: Enterprise
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: CocoaPods trunk
+  partner: null
+  partner_match: register
+  type: register
+  channel: package-registry
+  relationship: distribution-channel
+  direction: provider-built
+  evidence: https://cocoapods.org/pods/UserLeapKit
+  category: iOS SDK (CocoaPods)
+  contract_reference:
+    register: CocoaPods trunk (cdn.cocoapods.org Specs; github.com/CocoaPods/Specs)
+    spec_file: null
+    role: cocoapods-publisher
+    registered_name: The Sprig Team
+    matched_domain: sprig.com
+    matched_by: domain
+    pods:
+    - pod: UserLeapKit
+      version: 4.36.1
+      homepage: http://sprig.com
+      deprecated: false
+    signal_note: latest podspec homepage (domain) + authors (name); pods, versions and counts are context
+    detected_by: sweep-mobile-sdk-index.py
+    detected: '2026-10-21'
+  detected_by: sweep-mobile-sdk-index.py
+  first_seen: '2026-10-21'
 method: searched
 checked:
 - https://api.nuget.org/v3
@@ -202,6 +228,10 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- https://cdn.cocoapods.org/all_pods.txt
+- https://cert.appdefensealliance.org/certifications
+- https://play.google.com/sdks
+- https://search.maven.org/solrsearch/select
 source:
 - https://docs.mparticle.com/integrations/sprig/audience/
 - https://hightouch.com/docs/destinations/sprig
