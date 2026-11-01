@@ -64,6 +64,143 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sprig is a company surfaced as a portfolio company of a16z, accel, battery-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Sprig is a continuous product-research platform that helps teams automatically capture user insights to improve their product, user experience, and marketing. Sprig delivers in-product studies and surveys to specific users at specific moments across web and mobile, then uses AI to synthesize responses into themes. For developers, Sprig ships a REST API (api.sprig.com) to export studies, responses, and themes and to manage users, web/mobile SDKs (JavaScript, iOS, Android, React Native, Flutter), a webhook event surface, and an official hosted MCP server for AI clients. Formerly UserLeap.
 
-Backed by: a16z, accel, battery-ventures — http://userleap.com/
+**Areas:** Company · Product Research · Surveys · User Insights · Customer Experience · Analytics · Product Analytics · Artificial Intelligence · Software-as-a-Service
+
+## Sprig on APIs.io
+
+Everything profiled for Sprig is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sprig/](https://apis.io/providers/sprig/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Sprig Purge API](https://apis.io/apis/sprig/sprig-purge-api/) — The Purge API from Sprig — 1 operation(s) for purge.
+- [Sprig Responses API](https://apis.io/apis/sprig/sprig-responses-api/) — The Responses API from Sprig — 1 operation(s) for responses.
+- [Sprig Surveys API](https://apis.io/apis/sprig/sprig-surveys-api/) — The Surveys API from Sprig — 1 operation(s) for surveys.
+- [Sprig Themes API](https://apis.io/apis/sprig/sprig-themes-api/) — The Themes API from Sprig — 1 operation(s) for themes.
+- [Sprig Users API](https://apis.io/apis/sprig/sprig-users-api/) — The Users API from Sprig — 2 operation(s) for users.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Sprig Webhooks](https://apis.io/asyncapis/sprig/sprig-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [sprig](https://apis.io/servers/sprig/sprig/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Sprig Agentic Access](https://apis.io/agentic-access/sprig/sprig-agentic-access/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Sprig V1 API](https://apis.io/collections/sprig/open-sprig-v1-api/)
+- [Sprig V1 V2 API](https://apis.io/collections/sprig/open-sprig-v2-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Sprig Api Overlay](https://apis.io/overlays/sprig/sprig-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sprig Authentication](https://apis.io/security/sprig/sprig-authentication/)
+- [Sprig Domain Security](https://apis.io/security/sprig/sprig-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Sprig Scopes](https://apis.io/scopes/sprig/sprig-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Sprig Plans Pricing](https://apis.io/plans/sprig/sprig-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sprig.com/)
+- [Documentation](https://docs.sprig.com/)
+- [Getting started](https://docs.sprig.com/docs/installation/introduction-web/web-javascript)
+- [API reference](https://docs.sprig.com/reference/sprig-api/overview)
+- [Pricing](https://sprig.com/pricing)
+- [Sign up](https://app.sprig.com/login)
+- [Blog](https://sprig.com/blog)
+- [Terms of service](https://sprig.com/ssa)
+- [Privacy policy](https://sprig.com/privacy-policy)
+- [GitHub](https://github.com/UserLeap)
+- [Status](https://status.sprig.com/)
+
+## API Evangelist rating
+
+**Kin Score 56.1** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 59.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 52.6 |
+
+**Agent readiness 55.6** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 31.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sprig/](https://apis.io/providers/sprig/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sprig: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sprig/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
